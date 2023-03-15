@@ -1,4 +1,7 @@
 outputs
 *.b#*
 *.s#*
-CYCLONE_IV_EP4CE15-master
+Quartus_Project/db
+Quartus_Project/incremental_db
+Quartus_Project/output_files/*
+*.stp

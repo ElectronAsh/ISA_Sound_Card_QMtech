@@ -20113,6 +20113,7 @@ Based on the following sources:
 <text x="116.84" y="165.1" size="2.54" layer="97">DIR High = A -&gt; B</text>
 <text x="195.58" y="-50.8" size="1.778" layer="97">&lt;- Open-Drain Outputs</text>
 <text x="76.2" y="129.54" size="1.778" layer="97">&lt;- BIDIR -&gt;</text>
+<text x="307.34" y="30.48" size="2.54" layer="91">Should probably add a resistor between the X pin and 5V on these...</text>
 </plain>
 <instances>
 <instance part="ISA" gate="A" x="-2.54" y="66.04"/>
@@ -20179,10 +20180,10 @@ Based on the following sources:
 <attribute name="NAME" x="69.85" y="115.7986" size="1.778" layer="95"/>
 <attribute name="VALUE" x="69.85" y="110.998" size="1.778" layer="96"/>
 </instance>
-<instance part="+3V11" gate="G$1" x="284.48" y="-121.92" rot="R270"/>
-<instance part="R4" gate="G$1" x="271.78" y="-121.92" rot="MR0">
-<attribute name="NAME" x="275.59" y="-120.4214" size="1.778" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="275.59" y="-125.222" size="1.778" layer="96" rot="MR0"/>
+<instance part="+3V11" gate="G$1" x="292.1" y="-121.92" rot="R270"/>
+<instance part="R4" gate="G$1" x="279.4" y="-121.92" rot="MR0">
+<attribute name="NAME" x="283.21" y="-120.4214" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="283.21" y="-125.222" size="1.778" layer="96" rot="MR0"/>
 </instance>
 <instance part="+3V2" gate="G$1" x="297.18" y="-60.96" rot="R270"/>
 <instance part="R5" gate="G$1" x="284.48" y="-60.96" rot="MR0">
@@ -20969,12 +20970,12 @@ Based on the following sources:
 <label x="160.02" y="-226.06" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
 </segment>
 </net>
-<net name="FPGA_0WS" class="0">
+<net name="FPGA_ZERO_WAIT" class="0">
 <segment>
 <pinref part="IC2" gate="A" pin="I"/>
 <label x="248.92" y="-121.92" size="1.778" layer="95"/>
 <pinref part="R4" gate="G$1" pin="2"/>
-<wire x1="246.38" y1="-121.92" x2="266.7" y2="-121.92" width="0.1524" layer="91"/>
+<wire x1="246.38" y1="-121.92" x2="274.32" y2="-121.92" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="FPGA_IOCHK" class="0">
@@ -22303,7 +22304,7 @@ Based on the following sources:
 <segment>
 <pinref part="R4" gate="G$1" pin="1"/>
 <pinref part="+3V11" gate="G$1" pin="+3V3"/>
-<wire x1="276.86" y1="-121.92" x2="281.94" y2="-121.92" width="0.1524" layer="91"/>
+<wire x1="284.48" y1="-121.92" x2="289.56" y2="-121.92" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R5" gate="G$1" pin="1"/>
@@ -22536,7 +22537,7 @@ Based on the following sources:
 <wire x1="109.22" y1="139.7" x2="78.74" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="FPGA_SD159_DIR" class="0">
+<net name="FPGA_SD158_DIR" class="0">
 <segment>
 <pinref part="U12" gate="G$1" pin="2DIR"/>
 <label x="104.14" y="114.3" size="1.778" layer="95" rot="MR0"/>
@@ -22695,7 +22696,7 @@ Based on the following sources:
 <wire x1="317.5" y1="-147.32" x2="317.5" y2="-142.24" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="FPGA_SA159_DIR" class="0">
+<net name="FPGA_SA158_DIR" class="0">
 <segment>
 <pinref part="U8" gate="G$1" pin="1DIR"/>
 <wire x1="109.22" y1="-71.12" x2="106.68" y2="-71.12" width="0.1524" layer="91"/>
@@ -22713,6 +22714,7 @@ Based on the following sources:
 <sheet>
 <description>FPGA</description>
 <plain>
+<text x="-5.08" y="99.06" size="1.778" layer="97">CLK inputs Grounded on the proto! -&gt;</text>
 </plain>
 <instances>
 <instance part="GND6" gate="1" x="45.72" y="129.54" rot="MR0"/>
@@ -22970,7 +22972,7 @@ Based on the following sources:
 <pinref part="CYC_IV_" gate="G$2" pin="A9@42"/>
 </segment>
 </net>
-<net name="FPGA_0WS" class="0">
+<net name="FPGA_ZERO_WAIT" class="0">
 <segment>
 <wire x1="104.14" y1="50.8" x2="96.52" y2="50.8" width="0.1524" layer="91"/>
 <label x="101.6" y="50.8" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
@@ -23290,23 +23292,13 @@ Based on the following sources:
 </segment>
 <segment>
 <pinref part="GND7" gate="1" pin="GND"/>
-<wire x1="40.64" y1="104.14" x2="38.1" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="38.1" y1="104.14" x2="33.02" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="40.64" y1="99.06" x2="38.1" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="38.1" y1="99.06" x2="38.1" y2="104.14" width="0.1524" layer="91"/>
-<junction x="38.1" y="104.14"/>
+<wire x1="40.64" y1="104.14" x2="33.02" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="CYC_IV_" gate="G$1" pin="GND@1"/>
-<pinref part="CYC_IV_" gate="G$1" pin="CLK15_6P@5"/>
 </segment>
 <segment>
 <pinref part="GND8" gate="1" pin="GND"/>
-<wire x1="96.52" y1="104.14" x2="99.06" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="99.06" y1="104.14" x2="104.14" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="96.52" y1="99.06" x2="99.06" y2="99.06" width="0.1524" layer="91"/>
-<wire x1="99.06" y1="99.06" x2="99.06" y2="104.14" width="0.1524" layer="91"/>
-<junction x="99.06" y="104.14"/>
+<wire x1="96.52" y1="104.14" x2="104.14" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="CYC_IV_" gate="G$1" pin="GND@2"/>
-<pinref part="CYC_IV_" gate="G$1" pin="CLK14_6N@6"/>
 </segment>
 <segment>
 <pinref part="GND9" gate="1" pin="GND"/>
@@ -23365,7 +23357,7 @@ Based on the following sources:
 <pinref part="CYC_IV_" gate="G$2" pin="B18@55"/>
 </segment>
 </net>
-<net name="FPGA_SD159_DIR" class="0">
+<net name="FPGA_SD158_DIR" class="0">
 <segment>
 <wire x1="104.14" y1="73.66" x2="96.52" y2="73.66" width="0.1524" layer="91"/>
 <label x="101.6" y="73.66" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
@@ -23636,7 +23628,7 @@ Based on the following sources:
 <pinref part="CYC_IV_" gate="G$1" pin="V21@28"/>
 </segment>
 </net>
-<net name="FPGA_SA159_DIR" class="0">
+<net name="FPGA_SA158_DIR" class="0">
 <segment>
 <wire x1="170.18" y1="48.26" x2="162.56" y2="48.26" width="0.1524" layer="91"/>
 <label x="165.1" y="48.26" size="1.778" layer="95" rot="MR0"/>
@@ -23649,6 +23641,11 @@ Based on the following sources:
 <description>Audio DAC / ADC</description>
 <plain>
 <text x="147.32" y="114.3" size="1.778" layer="91">&lt;- Standard I2S</text>
+<text x="93.98" y="147.32" size="1.778" layer="91">Pins 3 and 12 were not grounded !</text>
+<text x="154.94" y="99.06" size="1.778" layer="91">SCK pin should really be Grounded.
+The DAC will internally generate it using BCK.</text>
+<text x="121.92" y="55.88" size="1.778" layer="91">Pins 11 (MD1) was not grounded!
+MD1 and MD0 need to both be Low for SLAVE mode.</text>
 </plain>
 <instances>
 <instance part="GND50" gate="1" x="144.78" y="96.52"/>
@@ -23774,7 +23771,8 @@ Based on the following sources:
 <segment>
 <pinref part="GND50" gate="1" pin="GND"/>
 <wire x1="142.24" y1="114.3" x2="144.78" y2="114.3" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="114.3" x2="144.78" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="114.3" x2="144.78" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="104.14" x2="144.78" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="144.78" y1="101.6" x2="144.78" y2="99.06" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="121.92" x2="144.78" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="144.78" y1="121.92" x2="144.78" y2="114.3" width="0.1524" layer="91"/>
@@ -23794,6 +23792,9 @@ Based on the following sources:
 <pinref part="U4" gate="G$1" pin="DGND"/>
 <pinref part="U4" gate="G$1" pin="FMT"/>
 <pinref part="U4" gate="G$1" pin="FLT"/>
+<pinref part="U4" gate="G$1" pin="SCK"/>
+<wire x1="142.24" y1="104.14" x2="144.78" y2="104.14" width="0.1524" layer="91"/>
+<junction x="144.78" y="104.14"/>
 </segment>
 <segment>
 <pinref part="R65" gate="G$1" pin="2"/>
@@ -23819,11 +23820,15 @@ Based on the following sources:
 <pinref part="U1" gate="G$1" pin="FMT"/>
 <pinref part="GND18" gate="1" pin="GND"/>
 <wire x1="142.24" y1="30.48" x2="144.78" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="30.48" x2="144.78" y2="25.4" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="30.48" x2="144.78" y2="27.94" width="0.1524" layer="91"/>
 <pinref part="U1" gate="G$1" pin="MD0"/>
+<wire x1="144.78" y1="27.94" x2="144.78" y2="25.4" width="0.1524" layer="91"/>
 <wire x1="144.78" y1="25.4" x2="144.78" y2="17.78" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="25.4" x2="144.78" y2="25.4" width="0.1524" layer="91"/>
 <junction x="144.78" y="25.4"/>
+<pinref part="U1" gate="G$1" pin="MD1"/>
+<wire x1="142.24" y1="27.94" x2="144.78" y2="27.94" width="0.1524" layer="91"/>
+<junction x="144.78" y="27.94"/>
 </segment>
 <segment>
 <pinref part="C64" gate="G$1" pin="2"/>
@@ -23869,6 +23874,16 @@ Based on the following sources:
 <wire x1="101.6" y1="96.52" x2="101.6" y2="93.98" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="93.98" x2="111.76" y2="93.98" width="0.1524" layer="91"/>
 <junction x="111.76" y="93.98"/>
+<pinref part="C60" gate="G$1" pin="1"/>
+<wire x1="104.14" y1="134.62" x2="106.68" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="134.62" x2="106.68" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="119.38" x2="109.22" y2="119.38" width="0.1524" layer="91"/>
+<pinref part="U4" gate="G$1" pin="CPGND"/>
+<wire x1="109.22" y1="119.38" x2="114.3" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="119.38" x2="109.22" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="109.22" y1="104.14" x2="111.76" y2="104.14" width="0.1524" layer="91"/>
+<junction x="109.22" y="119.38"/>
+<junction x="111.76" y="104.14"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G1" pin="GND"/>
@@ -24007,15 +24022,6 @@ Based on the following sources:
 <wire x1="114.3" y1="114.3" x2="104.14" y2="114.3" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="114.3" x2="104.14" y2="127" width="0.1524" layer="91"/>
 <pinref part="U4" gate="G$1" pin="VNEG"/>
-</segment>
-</net>
-<net name="N$77" class="0">
-<segment>
-<pinref part="C60" gate="G$1" pin="1"/>
-<wire x1="104.14" y1="134.62" x2="106.68" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="134.62" x2="106.68" y2="119.38" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="119.38" x2="114.3" y2="119.38" width="0.1524" layer="91"/>
-<pinref part="U4" gate="G$1" pin="CPGND"/>
 </segment>
 </net>
 <net name="N$62" class="0">
@@ -24195,11 +24201,6 @@ Based on the following sources:
 <pinref part="C72" gate="G$1" pin="2"/>
 <wire x1="83.82" y1="20.32" x2="83.82" y2="27.94" width="0.1524" layer="91"/>
 <junction x="83.82" y="27.94"/>
-</segment>
-<segment>
-<pinref part="U1" gate="G$1" pin="MD1"/>
-<wire x1="142.24" y1="27.94" x2="152.4" y2="27.94" width="0.1524" layer="91"/>
-<label x="149.86" y="27.94" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$1" class="0">
