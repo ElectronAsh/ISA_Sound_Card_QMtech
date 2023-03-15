@@ -28,6 +28,8 @@
 module sound
 (
 	input             clk,
+	input      [27:0] clock_rate,	// (the frequency of the clk input, in Hz)
+	
 	input             clk_opl,
 	input             rst_n,
 
@@ -56,14 +58,16 @@ module sound
 
 	//sound output
 	output reg [15:0] sample_l,
-	output reg [15:0] sample_r,
-
-	input      [27:0] clock_rate
+	output reg [15:0] sample_r
 );
 
 
+reg write_1;
+always @(posedge clk) write_1 <= write; 
+
 wire sb_read  = read  & sb_cs;
-wire sb_write = write & sb_cs;
+//wire sb_write = write & sb_cs;
+wire sb_write = write & !write_1 & sb_cs;
 
 wire fm_read  = read  & fm_cs;
 wire fm_write = write & fm_cs;
@@ -250,7 +254,7 @@ reg [4:0] vol_l, vol_r;
 always @(posedge clk) begin
 	if(~rst_n) begin
 		{vol_l, vol_r} <= 10'h3FF;
-		sbp_stereo <= 0;
+		sbp_stereo <= 1;	// TESTING. Death By Stereo!
 	end
 	else if(write && sb_cs && address == 4'h5) begin
 		if(mixer_reg == 8'h00) begin {vol_l, vol_r} <= 10'h3FF; sbp_stereo <= 0; end

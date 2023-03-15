@@ -1,7 +1,7 @@
 
 module i2s
 #(
-	parameter AUDIO_DW = 16
+	parameter AUDIO_DW = 32
 )
 (
 	input      reset,
@@ -19,10 +19,10 @@ module i2s
 always @(posedge clk) begin
 	reg  [7:0] bit_cnt;
 	reg msclk;
-
+	
 	reg [AUDIO_DW-1:0] left;
 	reg [AUDIO_DW-1:0] right;
-
+	
 	if (reset) begin
 		bit_cnt <= 1;
 		lrclk   <= 1;
@@ -31,13 +31,13 @@ always @(posedge clk) begin
 	end
 	else begin
 		sclk <= msclk;
-		if (ce) begin
+		if (ce) begin					// Must use ce (Clock Enable), else the logic won't work correctly.
 			msclk <= ~msclk;
-			if(msclk) begin
-				if(bit_cnt >= AUDIO_DW) begin
-					bit_cnt <= 1;
-					lrclk <= ~lrclk;
-					if (lrclk) begin
+			if (msclk) begin
+				if (bit_cnt >= AUDIO_DW) begin	// Last bit has been shifted out...
+					bit_cnt <= 1;						// Reset the bit count.
+					lrclk <= ~lrclk;					// Toggle LRCLK.
+					if (lrclk) begin					// If LRCLK was just High, latch the new incoming left/right samples...
 						left  <= left_chan;
 						right <= right_chan;
 					end

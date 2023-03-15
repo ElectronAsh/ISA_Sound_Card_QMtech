@@ -19,14 +19,11 @@ module CYCLONE_IV_SDRAM_RTL_Test(
 	output            DRAM_UDQM,
 	output            DRAM_WE_N,
 
-	///////// Start Test KEY /////////
-	input       		KEY,
+	///////// KEYs /////////
+	input [1:0]      	KEY,
 
 	///////// LEDR /////////
 	output      		LEDR,
-
-	///////// RESET /////////
-	input            	RESET_N,
 
 	input       		CLK15_6P,	// Both were grounded on U8 on the proto PCBs. Oops.
 	input       		CLK14_6N,
@@ -135,14 +132,14 @@ wire          clk_test;
 //	SDRAM frame buffer
 Sdram_Control	u1	(	//	HOST Side
 						   .REF_CLK(CLOCK_50),
-					      .RESET_N(RESET_N),
+					      .RESET_N(KEY[1]),
 							//	FIFO Write Side 
 						   .WR_DATA(writedata),
 							.WR(write),
 							.WR_ADDR(0),
 							.WR_MAX_ADDR(24'h1ffffff),
 							.WR_LENGTH(9'h80),
-							.WR_LOAD(!RESET_N ),
+							.WR_LOAD(!KEY[1] ),
 							.WR_CLK(clk_test),
 							//	FIFO Read Side 
 						   .RD_DATA(readdata),
@@ -150,7 +147,7 @@ Sdram_Control	u1	(	//	HOST Side
 				        	.RD_ADDR(0),			//	Read odd field and bypess blanking
 							.RD_MAX_ADDR(24'h1ffffff),
 							.RD_LENGTH(9'h80),
-				        	.RD_LOAD(!RESET_N ),
+				        	.RD_LOAD(!KEY[1] ),
 							.RD_CLK(clk_test),
                      //	SDRAM Side
 						   .SA(DRAM_ADDR),
@@ -172,19 +169,23 @@ wire  sdram_test_complete;
 */
 
 /*
-wire clk_sys;
 PLL01 u0(
 	.areset(1'b0),
 	.inclk0(CLOCK_50),
 	.c0(clk_sys),
 	.locked()
 );
+wire clk_sys;
 */
+
+//wire clk_sys = CLOCK_50;
+wire clk_sys = CLK;
+
 
 /*
 RW_Test u2(
       .iCLK(clk_test),
-		.iRST_n(RESET_N),
+		.iRST_n(KEY[1]),
 		.iBUTTON(test_start_n),
       .write(write),
 		.writedata(writedata),
@@ -195,7 +196,7 @@ RW_Test u2(
 		.drv_status_test_complete(sdram_test_complete)
 );
 
-assign test_start_n = KEY;
+assign test_start_n = KEY[0];
 
 assign LEDR = !(sdram_test_complete & sdram_test_pass);
 */
@@ -236,7 +237,7 @@ reg [19:0] addr_lat;
 (*keep*)wire iow_n_falling = !IOW_N & iow_n_reg;
 (*keep*)wire iow_n_rising = IOW_N & !iow_n_reg;
 
-always @(posedge CLOCK_50) begin
+always @(posedge clk_sys) begin
 	ior_n_reg <= IOR_N;
 	iow_n_reg <= IOW_N;
 	bale_reg <= BALE;
@@ -262,16 +263,15 @@ end
 (*keep*)wire irq_5, irq_7, irq_10;
 
 (*keep*)wire [15:0] iobus_writedata = sd_reg;
-//(*keep*)wire iobus_write = iow_n_falling;
-(*keep*)wire iobus_write = !iow_n_reg & !AEN;
+(*keep*)wire iobus_write = !iow_n_reg /*& !AEN*/;
+//(*keep*)wire iobus_write = !IOW_N;
 
 (*keep*)wire [7:0] sound_readdata;
-//(*keep*)wire iobus_read = ior_n_falling;
-(*keep*)wire iobus_read = !ior_n_reg & !AEN;
+(*keep*)wire iobus_read = !ior_n_reg /*& !AEN*/;
+//(*keep*)wire iobus_read = !IOR_N;
 
-
-wire bus_read = ((sb_cs | fm_cs) & !ior_n_reg);
-
+//wire bus_read = ((sb_cs | fm_cs) & !ior_n_reg);
+wire bus_read = ((sb_cs | fm_cs) & !IOR_N);
 assign SD = (bus_read) ? {sound_readdata, sound_readdata} : 16'hzzzz;
 assign SD70_DIR = !bus_read;	// Bring SD70_DIR LOW during a READ.
 assign SD158_DIR = !bus_read;	// Bring SD158_DIR LOW during a READ.
@@ -311,19 +311,28 @@ assign {DRQ_HI_SEL_A2, DRQ_HI_SEL_A1, DRQ_HI_SEL_A0} = 3'd5;
 assign DRQ_HI_TRIG_N = !dma_req16;
 
 
+reg dack1_n_reg;
+reg dack5_n_reg;
+always @(posedge clk_sys) begin
+	dack1_n_reg <= DACK1_N;
+	dack5_n_reg <= DACK5_N;
+end
+
 wire dma_req8;
 wire dma_req16;
 
-wire dma_ack = !DACK1_N | !DACK5_N;
+//wire dma_ack = ((!DACK1_N & dack1_n_reg) | (!DACK5_N & dack5_n_reg)) && !IOW_N;
+wire dma_ack = (!DACK1_N | !DACK5_N) && !IOW_N;
 
-wire [15:0] dma_readdata;
+
+wire [15:0] dma_readdata = SD;
 wire [15:0] dma_writedata;
-
-
 
 sound sound_inst
 (
-	.clk(CLOCK_50) ,					// input  clk
+	.clk(clk_sys) ,					// input  clk
+	.clock_rate( 28'd8_333_000 ) ,// input [27:0] clock_rate. (the frequency of the clk input, in Hz)
+	
 	.clk_opl(CLOCK_50) ,				// input  clk_opl
 	
 	.rst_n(MRESET_N) ,				// input  rst_n
@@ -354,28 +363,30 @@ sound sound_inst
 	.dma_writedata(dma_writedata) ,	// output [15:0] dma_writedata
 	
 	.sample_l(sb_out_l) ,			// output [15:0] sample_l
-	.sample_r(sb_out_r) ,			// output [15:0] sample_r
-	
-	.clock_rate( 28'd50_000_000 )	// input [27:0] clock_rate. (the frequency of clk, in Hz)
+	.sample_r(sb_out_r)				// output [15:0] sample_r	
 );
 
 reg [15:0] clk_div;
 always @(posedge CLOCK_50) clk_div <= clk_div + 1; 
 
-wire [15:0] test_tone = {clk_div[15], 15'h7fff};
+//wire i2s_ce = clk_div[3:0]==0;	// 3.125 MHz. 64fs, so 48,828 KHz I2S output rate.
+wire i2s_ce = clk_div[2:0]==0;	// 6.250 MHz. 64fs, so 97.656 KHz I2S output rate.
+
+//wire [15:0] test_tone = {clk_div[15], 15'h7fff};
 
 i2s i2s_inst
 (
 	.reset( !MRESET_N ) ,	// input  reset
-	.clk( clk_div[4] ) ,		// input  clk
-	.ce(1'b1) ,					// input  ce
+	
+	.clk(CLOCK_50) ,			// input  clk
+	.ce(i2s_ce) ,				// input  ce
 	
 	.sclk(i2s_bck_out) ,		// output  sclk
 	.lrclk(i2s_lrck_out) ,	// output  lrclk
 	.sdata(i2s_data_out) ,	// output  sdata
 	
-	.left_chan(test_tone) ,	// input [AUDIO_DW-1:0] left_chan
-	.right_chan(sb_out_r) 	// input [AUDIO_DW-1:0] right_chan
+	.left_chan( {sb_out_l, 16'h0000} ) ,	// input [AUDIO_DW-1:0] left_chan
+	.right_chan( {sb_out_r, 16'h0000} ) 	// input [AUDIO_DW-1:0] right_chan
 );
 
 (*keep*)wire i2s_bck_out;
@@ -389,7 +400,7 @@ assign DAC_DIN  = i2s_data_out;
 /*
 mpu mpu
 (
-	.clk               (CLOCK_50),
+	.clk               (clk_sys),
 	.br_clk            (clk_mpu),
 	.reset             (!MRESET_N),
 
