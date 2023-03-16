@@ -251,24 +251,21 @@ end
 
 (*keep*)wire [15:0] io_addr = addr_lat[15:0];
 
-(*keep*)wire joy_cs = (io_addr == 16'h0201);
-(*keep*)wire sb_cs  = (io_addr >= 16'h0220 && io_addr <= 16'h022f);
-(*keep*)wire fm_cs  = (io_addr >= 16'h0388 && io_addr <= 16'h038b);
-(*keep*)wire mpu_cs = (io_addr == 16'h0330);
-
-(*keep*)wire cms_en = 1'b0;	// Disable for now.
+(*keep*)wire joy_cs = (io_addr == 16'h0201) && !AEN;
+(*keep*)wire sb_cs  = (io_addr >= 16'h0220 && io_addr <= 16'h022f) && !AEN;
+(*keep*)wire fm_cs  = (io_addr >= 16'h0388 && io_addr <= 16'h038b) && !AEN;
+(*keep*)wire mpu_cs = (io_addr == 16'h0330) && !AEN;
 
 (*keep*)wire fm_mode = 1'b1;	// OPL3.
+(*keep*)wire cms_en = 1'b0;	// Disable for now.
 
 (*keep*)wire irq_5, irq_7, irq_10;
 
 (*keep*)wire [15:0] iobus_writedata = sd_reg;
-(*keep*)wire iobus_write = !iow_n_reg /*& !AEN*/;
-//(*keep*)wire iobus_write = !IOW_N;
+(*keep*)wire iobus_write = !iow_n_reg;
 
 (*keep*)wire [7:0] sound_readdata;
-(*keep*)wire iobus_read = !ior_n_reg /*& !AEN*/;
-//(*keep*)wire iobus_read = !IOR_N;
+(*keep*)wire iobus_read = !ior_n_reg;
 
 //wire bus_read = ((sb_cs | fm_cs) & !ior_n_reg);
 wire bus_read = ((sb_cs | fm_cs) & !IOR_N);
@@ -283,8 +280,8 @@ assign SD158_DIR = !bus_read;	// Bring SD158_DIR LOW during a READ.
 // (probably don't need this for the Sound Blaster and OPL IO writes, since DMA gets the full 16-bit ISA Data bus anyway.
 //  The ISA bus on my Pentium does duplicate odd-byte writes onto the Upper and Lower 16-bits, but do all ISA mobos do that? ElectronAsh.)
 //
-//wire [7:0] sound_writedata = (!SBHE) ? iobus_writedata[15:8] : iobus_writedata[7:0];
-wire [7:0] sound_writedata = iobus_writedata[7:0];
+wire [7:0] sound_writedata = (!SBHE && addr_lat[0]) ? iobus_writedata[15:8] : iobus_writedata[7:0];
+//wire [7:0] sound_writedata = iobus_writedata[7:0];
 
 
 (*keep*)wire [7:0] mpu_readdata;
@@ -314,27 +311,18 @@ assign {DRQ_HI_SEL_A2, DRQ_HI_SEL_A1, DRQ_HI_SEL_A0} = 3'd5;
 assign DRQ_HI_TRIG_N = !dma_req16;
 
 
-reg dack1_n_reg;
-reg dack5_n_reg;
-always @(posedge clk_sys) begin
-	dack1_n_reg <= DACK1_N;
-	dack5_n_reg <= DACK5_N;
-end
-
-wire dma_req8;
-wire dma_req16;
-
-//wire dma_ack = ((!DACK1_N & dack1_n_reg) | (!DACK5_N & dack5_n_reg)) && !IOW_N;
-wire dma_ack = (!DACK1_N | !DACK5_N) && !IOW_N;
+wire dma_ack = (!DACK1_N | !DACK5_N) && !IOW_N && AEN;
 
 
 wire [15:0] dma_readdata = SD;
 wire [15:0] dma_writedata;
+wire dma_req8;
+wire dma_req16;
 
 sound sound_inst
 (
 	.clk(clk_sys) ,					// input  clk
-	.clock_rate( 28'd8_333_000 ) ,// input [27:0] clock_rate. (the frequency of the clk input, in Hz)
+	.clock_rate( 28'd8_000_000 ) ,// input [27:0] clock_rate. (the frequency of the clk input, in Hz)
 	
 	.clk_opl(CLOCK_50) ,				// input  clk_opl
 	

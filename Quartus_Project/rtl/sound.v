@@ -254,7 +254,7 @@ reg [4:0] vol_l, vol_r;
 always @(posedge clk) begin
 	if(~rst_n) begin
 		{vol_l, vol_r} <= 10'h3FF;
-		sbp_stereo <= 1;	// TESTING. Death By Stereo!
+		sbp_stereo <= 0;
 	end
 	else if(write && sb_cs && address == 4'h5) begin
 		if(mixer_reg == 8'h00) begin {vol_l, vol_r} <= 10'h3FF; sbp_stereo <= 0; end
@@ -295,7 +295,8 @@ end
 
 always @(posedge clk) begin
 	sample_l <= $signed(sample_pre_l) >>> ~vol_l[4:1];
-	sample_r <= $signed(sample_pre_r) >>> ~vol_l[4:1];
+	//sample_r <= $signed(sample_pre_r) >>> ~vol_l[4:1];	// Shouldn't this be using vol_r? ElectronAsh.
+	sample_r <= $signed(sample_pre_r) >>> ~vol_r[4:1];
 end
 
 endmodule
