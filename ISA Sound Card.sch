@@ -189,106 +189,6 @@
 </layers>
 <schematic xreflabel="%F%N/%S.%C%R" xrefpart="/%S.%C%R">
 <libraries>
-<library name="con-thomas-betts">
-<description>&lt;b&gt;Thomas &amp; Betts Connectors&lt;/b&gt;&lt;p&gt;
-Based on Thomas &amp; Betts Catalog &lt;i&gt;Electronioc Interconnects European Edition 1998&lt;/i&gt;.&lt;p&gt;
-Created 10.06.1999&lt;br&gt;
-Packages changed/corrected 22.02.2006 librarian@cadsoft.de&lt;br&gt;
-&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-<package name="H5M15RA">
-<description>&lt;b&gt;THOMAS&amp;BETTS&lt;/b&gt; H3M15RA29A</description>
-<wire x1="-12.6111" y1="-15.4813" x2="-12.6111" y2="-9.3599" width="0.254" layer="21"/>
-<wire x1="-12.6111" y1="-9.3599" x2="-19.4437" y2="-9.3599" width="0.254" layer="21"/>
-<wire x1="-19.4437" y1="-9.3599" x2="-19.4437" y2="3.3401" width="0.254" layer="21"/>
-<wire x1="19.4437" y1="3.3147" x2="19.4437" y2="-9.3599" width="0.254" layer="21"/>
-<wire x1="19.4437" y1="-9.3599" x2="12.6111" y2="-9.3599" width="0.254" layer="21"/>
-<wire x1="12.6111" y1="-9.3599" x2="12.6111" y2="-15.4813" width="0.254" layer="21"/>
-<wire x1="12.6111" y1="-15.4813" x2="-12.6111" y2="-15.4813" width="0.254" layer="21"/>
-<wire x1="-12.6111" y1="-9.3599" x2="12.6111" y2="-9.3599" width="0.254" layer="21"/>
-<wire x1="-19.4437" y1="3.3401" x2="-12.0777" y2="3.3401" width="0.254" layer="21"/>
-<wire x1="-12.0777" y1="3.3401" x2="-12.0777" y2="-6.2992" width="0.254" layer="21"/>
-<wire x1="19.4437" y1="3.3147" x2="12.0777" y2="3.3147" width="0.254" layer="21"/>
-<wire x1="12.0777" y1="3.3147" x2="12.0777" y2="-6.2992" width="0.254" layer="21"/>
-<wire x1="-19.4437" y1="-6.4389" x2="19.4437" y2="-6.4389" width="0.254" layer="21"/>
-<pad name="1" x="-9.6901" y="1.4224" drill="1.0922"/>
-<pad name="2" x="-6.9215" y="1.4224" drill="1.0922"/>
-<pad name="3" x="-4.1529" y="1.4224" drill="1.0922"/>
-<pad name="4" x="-1.3843" y="1.4224" drill="1.0922"/>
-<pad name="5" x="1.3843" y="1.4224" drill="1.0922"/>
-<pad name="6" x="4.1529" y="1.4224" drill="1.0922"/>
-<pad name="7" x="6.9215" y="1.4224" drill="1.0922"/>
-<pad name="8" x="9.6901" y="1.4224" drill="1.0922"/>
-<pad name="9" x="-8.3058" y="-1.4224" drill="1.0922"/>
-<pad name="10" x="-5.5372" y="-1.4224" drill="1.0922"/>
-<pad name="11" x="-2.7686" y="-1.4224" drill="1.0922"/>
-<pad name="12" x="0" y="-1.4224" drill="1.0922"/>
-<pad name="13" x="2.7686" y="-1.4224" drill="1.0922"/>
-<pad name="14" x="5.5372" y="-1.4224" drill="1.0922"/>
-<pad name="15" x="8.3058" y="-1.4224" drill="1.0922"/>
-<text x="-9.525" y="3.175" size="1.27" layer="25">&gt;NAME</text>
-<text x="-12.7" y="-8.255" size="1.27" layer="27">&gt;VALUE</text>
-<pad name="P$1" x="-16.6624" y="0" drill="3.048"/>
-<pad name="P$2" x="16.6624" y="0" drill="3.048"/>
-</package>
-</packages>
-<symbols>
-<symbol name="F">
-<wire x1="0.889" y1="0.889" x2="0.889" y2="-0.889" width="0.254" layer="94" curve="180" cap="flat"/>
-<text x="1.27" y="-0.762" size="1.778" layer="95">&gt;NAME</text>
-<pin name="F" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="D-SUB-15-SH">
-<gates>
-<gate name="1" symbol="F" x="-7.62" y="27.94"/>
-<gate name="2" symbol="F" x="-7.62" y="25.4"/>
-<gate name="3" symbol="F" x="-7.62" y="22.86"/>
-<gate name="4" symbol="F" x="-7.62" y="20.32"/>
-<gate name="5" symbol="F" x="-7.62" y="17.78"/>
-<gate name="6" symbol="F" x="-7.62" y="15.24"/>
-<gate name="7" symbol="F" x="-7.62" y="12.7"/>
-<gate name="8" symbol="F" x="-7.62" y="10.16"/>
-<gate name="9" symbol="F" x="-7.62" y="7.62"/>
-<gate name="10" symbol="F" x="-7.62" y="5.08"/>
-<gate name="11" symbol="F" x="-7.62" y="2.54"/>
-<gate name="12" symbol="F" x="-7.62" y="0"/>
-<gate name="13" symbol="F" x="-7.62" y="-2.54"/>
-<gate name="14" symbol="F" x="-7.62" y="-5.08"/>
-<gate name="15" symbol="F" x="-7.62" y="-7.62"/>
-<gate name="SH1" symbol="F" x="-7.62" y="-15.24"/>
-<gate name="SH2" symbol="F" x="-7.62" y="-17.78"/>
-</gates>
-<devices>
-<device name="" package="H5M15RA">
-<connects>
-<connect gate="1" pin="F" pad="1"/>
-<connect gate="10" pin="F" pad="10"/>
-<connect gate="11" pin="F" pad="11"/>
-<connect gate="12" pin="F" pad="12"/>
-<connect gate="13" pin="F" pad="13"/>
-<connect gate="14" pin="F" pad="14"/>
-<connect gate="15" pin="F" pad="15"/>
-<connect gate="2" pin="F" pad="2"/>
-<connect gate="3" pin="F" pad="3"/>
-<connect gate="4" pin="F" pad="4"/>
-<connect gate="5" pin="F" pad="5"/>
-<connect gate="6" pin="F" pad="6"/>
-<connect gate="7" pin="F" pad="7"/>
-<connect gate="8" pin="F" pad="8"/>
-<connect gate="9" pin="F" pad="9"/>
-<connect gate="SH1" pin="F" pad="P$1"/>
-<connect gate="SH2" pin="F" pad="P$2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="supply1">
 <description>&lt;b&gt;Supply Symbols&lt;/b&gt;&lt;p&gt;
  GND, VCC, 0V, +5V, -5V, etc.&lt;p&gt;
@@ -19893,6 +19793,629 @@ Based on the following sources:
 </deviceset>
 </devicesets>
 </library>
+<library name="con-thomas-betts" urn="urn:adsk.eagle:library:191">
+<description>&lt;b&gt;Thomas &amp; Betts Connectors&lt;/b&gt;&lt;p&gt;
+Based on Thomas &amp; Betts Catalog &lt;i&gt;Electronioc Interconnects European Edition 1998&lt;/i&gt;.&lt;p&gt;
+Created 10.06.1999&lt;br&gt;
+Packages changed/corrected 22.02.2006 librarian@cadsoft.de&lt;br&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="H2M15RA" urn="urn:adsk.eagle:footprint:10504/1" library_version="1">
+<description>&lt;b&gt;THOMAS&amp;BETTS&lt;/b&gt; H2M15RA29A</description>
+<wire x1="-12.6111" y1="-15.621" x2="-12.6111" y2="-9.779" width="0.254" layer="21"/>
+<wire x1="-12.6111" y1="-9.779" x2="-19.4437" y2="-9.779" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="-9.779" x2="-19.4437" y2="8.255" width="0.254" layer="21"/>
+<wire x1="-11.4173" y1="8.255" x2="11.4173" y2="8.255" width="0.254" layer="51"/>
+<wire x1="19.4437" y1="8.255" x2="19.4437" y2="-9.779" width="0.254" layer="21"/>
+<wire x1="19.4437" y1="-9.779" x2="12.6111" y2="-9.779" width="0.254" layer="21"/>
+<wire x1="12.6111" y1="-9.779" x2="12.6111" y2="-15.621" width="0.254" layer="21"/>
+<wire x1="12.6111" y1="-15.621" x2="-12.6111" y2="-15.621" width="0.254" layer="21"/>
+<wire x1="-12.6111" y1="-9.779" x2="12.6111" y2="-9.779" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="8.255" x2="-11.4427" y2="8.255" width="0.254" layer="21"/>
+<wire x1="19.4437" y1="8.255" x2="11.4427" y2="8.255" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="-6.858" x2="19.4437" y2="-6.858" width="0.254" layer="21"/>
+<pad name="1" x="-9.6901" y="7.9248" drill="1.0922"/>
+<pad name="2" x="-6.9215" y="7.9248" drill="1.0922"/>
+<pad name="3" x="-4.1529" y="7.9248" drill="1.0922"/>
+<pad name="4" x="-1.3843" y="7.9248" drill="1.0922"/>
+<pad name="5" x="1.3843" y="7.9248" drill="1.0922"/>
+<pad name="6" x="4.1529" y="7.9248" drill="1.0922"/>
+<pad name="7" x="6.9215" y="7.9248" drill="1.0922"/>
+<pad name="8" x="9.6901" y="7.9248" drill="1.0922"/>
+<pad name="9" x="-8.3058" y="5.08" drill="1.0922"/>
+<pad name="10" x="-5.5372" y="5.08" drill="1.0922"/>
+<pad name="11" x="-2.7686" y="5.08" drill="1.0922"/>
+<pad name="12" x="0" y="5.08" drill="1.0922"/>
+<pad name="13" x="2.7686" y="5.08" drill="1.0922"/>
+<pad name="14" x="5.5372" y="5.08" drill="1.0922"/>
+<pad name="15" x="8.3058" y="5.08" drill="1.0922"/>
+<text x="-10.16" y="10.16" size="1.27" layer="25">&gt;NAME</text>
+<text x="-10.795" y="1.27" size="1.27" layer="27">&gt;VALUE</text>
+<hole x="-16.6624" y="-1.905" drill="3.048"/>
+<hole x="16.6624" y="-1.905" drill="3.048"/>
+</package>
+<package name="H2M15ST" urn="urn:adsk.eagle:footprint:10505/1" library_version="1">
+<description>&lt;b&gt;THOMAS&amp;BETTS&lt;/b&gt; H2M15ST29x</description>
+<wire x1="10.1727" y1="-3.9116" x2="-10.1727" y2="-3.9116" width="0.254" layer="21"/>
+<wire x1="11.1887" y1="3.9116" x2="-11.1887" y2="3.9116" width="0.254" layer="21"/>
+<wire x1="-11.0617" y1="-3.302" x2="-12.1031" y2="2.5908" width="0.254" layer="21"/>
+<wire x1="-12.1031" y1="2.5908" x2="-11.1887" y2="3.9116" width="0.254" layer="21" curve="-107.683629"/>
+<wire x1="-11.0617" y1="-3.302" x2="-10.1727" y2="-3.9116" width="0.254" layer="21" curve="68.921633"/>
+<wire x1="11.0617" y1="-3.302" x2="12.1031" y2="2.5908" width="0.254" layer="21"/>
+<wire x1="11.1887" y1="3.9116" x2="12.1031" y2="2.5908" width="0.254" layer="21" curve="-107.683629"/>
+<wire x1="10.1727" y1="-3.9116" x2="11.0617" y2="-3.302" width="0.254" layer="21" curve="68.921633"/>
+<wire x1="19.4437" y1="4.6228" x2="19.4437" y2="-4.6228" width="0.254" layer="21"/>
+<wire x1="18.9357" y1="-5.1308" x2="-18.9611" y2="-5.1308" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="-4.6482" x2="-19.4437" y2="4.6228" width="0.254" layer="21"/>
+<wire x1="-18.9357" y1="5.1308" x2="18.9357" y2="5.1308" width="0.254" layer="21"/>
+<wire x1="18.9357" y1="5.1308" x2="19.4437" y2="4.6228" width="0.254" layer="21" curve="-90"/>
+<wire x1="-19.4437" y1="4.6228" x2="-18.9357" y2="5.1308" width="0.254" layer="21" curve="-90"/>
+<wire x1="-19.4437" y1="-4.6228" x2="-18.9357" y2="-5.1308" width="0.254" layer="21" curve="90"/>
+<wire x1="18.9357" y1="-5.1308" x2="19.4437" y2="-4.6228" width="0.254" layer="21" curve="90"/>
+<pad name="1" x="-9.6901" y="1.4224" drill="1.0922"/>
+<pad name="2" x="-6.9215" y="1.4224" drill="1.0922"/>
+<pad name="3" x="-4.1529" y="1.4224" drill="1.0922"/>
+<pad name="4" x="-1.3843" y="1.4224" drill="1.0922"/>
+<pad name="5" x="1.3843" y="1.4224" drill="1.0922"/>
+<pad name="6" x="4.1529" y="1.4224" drill="1.0922"/>
+<pad name="7" x="6.9215" y="1.4224" drill="1.0922"/>
+<pad name="8" x="9.6901" y="1.4224" drill="1.0922"/>
+<pad name="9" x="-8.3058" y="-1.4224" drill="1.0922"/>
+<pad name="10" x="-5.5372" y="-1.4224" drill="1.0922"/>
+<pad name="11" x="-2.7686" y="-1.4224" drill="1.0922"/>
+<pad name="12" x="0" y="-1.4224" drill="1.0922"/>
+<pad name="13" x="2.7686" y="-1.4224" drill="1.0922"/>
+<pad name="14" x="5.5372" y="-1.4224" drill="1.0922"/>
+<pad name="15" x="8.3058" y="-1.4224" drill="1.0922"/>
+<text x="-18.415" y="5.715" size="1.27" layer="25">&gt;NAME</text>
+<text x="-10.16" y="5.715" size="1.27" layer="27">&gt;VALUE</text>
+<hole x="-16.6624" y="0" drill="3.048"/>
+<hole x="16.6624" y="0" drill="3.048"/>
+</package>
+<package name="H2R15RA" urn="urn:adsk.eagle:footprint:10506/1" library_version="1">
+<description>&lt;b&gt;THOMAS&amp;BETTS&lt;/b&gt; H2R15RA29A</description>
+<wire x1="-12.6111" y1="-15.621" x2="-12.6111" y2="-9.779" width="0.254" layer="21"/>
+<wire x1="-12.6111" y1="-9.779" x2="-19.4437" y2="-9.779" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="-9.779" x2="-19.4437" y2="8.255" width="0.254" layer="21"/>
+<wire x1="-11.4173" y1="8.255" x2="11.4173" y2="8.255" width="0.254" layer="51"/>
+<wire x1="19.4437" y1="8.255" x2="19.4437" y2="-9.779" width="0.254" layer="21"/>
+<wire x1="19.4437" y1="-9.779" x2="12.6111" y2="-9.779" width="0.254" layer="21"/>
+<wire x1="12.6111" y1="-9.779" x2="12.6111" y2="-15.621" width="0.254" layer="21"/>
+<wire x1="12.6111" y1="-15.621" x2="-12.6111" y2="-15.621" width="0.254" layer="21"/>
+<wire x1="-12.6111" y1="-9.779" x2="12.6111" y2="-9.779" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="8.255" x2="-11.4427" y2="8.255" width="0.254" layer="21"/>
+<wire x1="19.4437" y1="8.255" x2="11.4427" y2="8.255" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="-6.858" x2="19.4437" y2="-6.858" width="0.254" layer="21"/>
+<pad name="1" x="9.6901" y="7.9248" drill="1.0922"/>
+<pad name="2" x="6.9215" y="7.9248" drill="1.0922"/>
+<pad name="3" x="4.1529" y="7.9248" drill="1.0922"/>
+<pad name="4" x="1.3843" y="7.9248" drill="1.0922"/>
+<pad name="5" x="-1.3843" y="7.9248" drill="1.0922"/>
+<pad name="6" x="-4.1529" y="7.9248" drill="1.0922"/>
+<pad name="7" x="-6.9215" y="7.9248" drill="1.0922"/>
+<pad name="8" x="-9.6901" y="7.9248" drill="1.0922"/>
+<pad name="9" x="8.3058" y="5.08" drill="1.0922"/>
+<pad name="10" x="5.5372" y="5.08" drill="1.0922"/>
+<pad name="11" x="2.7686" y="5.08" drill="1.0922"/>
+<pad name="12" x="0" y="5.08" drill="1.0922"/>
+<pad name="13" x="-2.7686" y="5.08" drill="1.0922"/>
+<pad name="14" x="-5.5372" y="5.08" drill="1.0922"/>
+<pad name="15" x="-8.3058" y="5.08" drill="1.0922"/>
+<text x="-10.16" y="9.525" size="1.27" layer="25">&gt;NAME</text>
+<text x="-5.715" y="0.635" size="1.27" layer="27">&gt;VALUE</text>
+<hole x="-16.6624" y="-1.905" drill="3.048"/>
+<hole x="16.6624" y="-1.905" drill="3.048"/>
+</package>
+<package name="H2R15ST" urn="urn:adsk.eagle:footprint:10507/1" library_version="1">
+<description>&lt;b&gt;THOMAS&amp;BETTS&lt;/b&gt; H2R15ST29x</description>
+<wire x1="10.1727" y1="-3.9116" x2="-10.1727" y2="-3.9116" width="0.254" layer="21"/>
+<wire x1="11.1887" y1="3.9116" x2="-11.1887" y2="3.9116" width="0.254" layer="21"/>
+<wire x1="-11.0617" y1="-3.302" x2="-12.1031" y2="2.5908" width="0.254" layer="21"/>
+<wire x1="-12.1031" y1="2.5908" x2="-11.1887" y2="3.9116" width="0.254" layer="21" curve="-107.683629"/>
+<wire x1="-11.0617" y1="-3.302" x2="-10.1727" y2="-3.9116" width="0.254" layer="21" curve="68.921633"/>
+<wire x1="11.0617" y1="-3.302" x2="12.1031" y2="2.5908" width="0.254" layer="21"/>
+<wire x1="11.1887" y1="3.9116" x2="12.1031" y2="2.5908" width="0.254" layer="21" curve="-107.683629"/>
+<wire x1="10.1727" y1="-3.9116" x2="11.0617" y2="-3.302" width="0.254" layer="21" curve="68.921633"/>
+<wire x1="19.4437" y1="4.6228" x2="19.4437" y2="-4.6228" width="0.254" layer="21"/>
+<wire x1="18.9357" y1="-5.1308" x2="-18.9611" y2="-5.1308" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="-4.6482" x2="-19.4437" y2="4.6228" width="0.254" layer="21"/>
+<wire x1="-18.9357" y1="5.1308" x2="18.9357" y2="5.1308" width="0.254" layer="21"/>
+<wire x1="18.9357" y1="5.1308" x2="19.4437" y2="4.6228" width="0.254" layer="21" curve="-90"/>
+<wire x1="-19.4437" y1="4.6228" x2="-18.9357" y2="5.1308" width="0.254" layer="21" curve="-90"/>
+<wire x1="-19.4437" y1="-4.6228" x2="-18.9357" y2="-5.1308" width="0.254" layer="21" curve="90"/>
+<wire x1="18.9357" y1="-5.1308" x2="19.4437" y2="-4.6228" width="0.254" layer="21" curve="90"/>
+<pad name="1" x="9.6901" y="1.4224" drill="1.0922"/>
+<pad name="2" x="6.9215" y="1.4224" drill="1.0922"/>
+<pad name="3" x="4.1529" y="1.4224" drill="1.0922"/>
+<pad name="4" x="1.3843" y="1.4224" drill="1.0922"/>
+<pad name="5" x="-1.3843" y="1.4224" drill="1.0922"/>
+<pad name="6" x="-4.1529" y="1.4224" drill="1.0922"/>
+<pad name="7" x="-6.9215" y="1.4224" drill="1.0922"/>
+<pad name="8" x="-9.6901" y="1.4224" drill="1.0922"/>
+<pad name="9" x="8.3058" y="-1.4224" drill="1.0922"/>
+<pad name="10" x="5.5372" y="-1.4224" drill="1.0922"/>
+<pad name="11" x="2.7686" y="-1.4224" drill="1.0922"/>
+<pad name="12" x="0" y="-1.4224" drill="1.0922"/>
+<pad name="13" x="-2.7686" y="-1.4224" drill="1.0922"/>
+<pad name="14" x="-5.5372" y="-1.4224" drill="1.0922"/>
+<pad name="15" x="-8.3058" y="-1.4224" drill="1.0922"/>
+<text x="-15.24" y="5.715" size="1.27" layer="25">&gt;NAME</text>
+<text x="-6.985" y="5.715" size="1.27" layer="27">&gt;VALUE</text>
+<hole x="-16.6624" y="0" drill="3.048"/>
+<hole x="16.6624" y="0" drill="3.048"/>
+</package>
+<package name="H3M15RA" urn="urn:adsk.eagle:footprint:10508/1" library_version="1">
+<description>&lt;b&gt;THOMAS&amp;BETTS&lt;/b&gt; H3M15RA29A</description>
+<wire x1="-12.6111" y1="-15.4813" x2="-12.6111" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="-12.6111" y1="-9.3599" x2="-19.4437" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="-9.3599" x2="-19.4437" y2="3.9751" width="0.254" layer="21"/>
+<wire x1="19.4437" y1="3.9497" x2="19.4437" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="19.4437" y1="-9.3599" x2="12.6111" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="12.6111" y1="-9.3599" x2="12.6111" y2="-15.4813" width="0.254" layer="21"/>
+<wire x1="12.6111" y1="-15.4813" x2="-12.6111" y2="-15.4813" width="0.254" layer="21"/>
+<wire x1="-12.6111" y1="-9.3599" x2="12.6111" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="3.9751" x2="-12.0777" y2="3.9751" width="0.254" layer="21"/>
+<wire x1="-12.0777" y1="3.9751" x2="-12.0777" y2="-6.2992" width="0.254" layer="21"/>
+<wire x1="19.4437" y1="3.9497" x2="12.0777" y2="3.9497" width="0.254" layer="21"/>
+<wire x1="12.0777" y1="3.9497" x2="12.0777" y2="-6.2992" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="-6.4389" x2="19.4437" y2="-6.4389" width="0.254" layer="21"/>
+<pad name="1" x="-9.6901" y="1.4224" drill="1.0922"/>
+<pad name="2" x="-6.9215" y="1.4224" drill="1.0922"/>
+<pad name="3" x="-4.1529" y="1.4224" drill="1.0922"/>
+<pad name="4" x="-1.3843" y="1.4224" drill="1.0922"/>
+<pad name="5" x="1.3843" y="1.4224" drill="1.0922"/>
+<pad name="6" x="4.1529" y="1.4224" drill="1.0922"/>
+<pad name="7" x="6.9215" y="1.4224" drill="1.0922"/>
+<pad name="8" x="9.6901" y="1.4224" drill="1.0922"/>
+<pad name="9" x="-8.3058" y="-1.4224" drill="1.0922"/>
+<pad name="10" x="-5.5372" y="-1.4224" drill="1.0922"/>
+<pad name="11" x="-2.7686" y="-1.4224" drill="1.0922"/>
+<pad name="12" x="0" y="-1.4224" drill="1.0922"/>
+<pad name="13" x="2.7686" y="-1.4224" drill="1.0922"/>
+<pad name="14" x="5.5372" y="-1.4224" drill="1.0922"/>
+<pad name="15" x="8.3058" y="-1.4224" drill="1.0922"/>
+<text x="-10.16" y="3.175" size="1.27" layer="25">&gt;NAME</text>
+<text x="-12.065" y="-8.255" size="1.27" layer="27">&gt;VALUE</text>
+<hole x="-16.6624" y="0" drill="3.048"/>
+<hole x="16.6624" y="0" drill="3.048"/>
+</package>
+<package name="H5M15RA" urn="urn:adsk.eagle:footprint:10509/1" library_version="1">
+<description>&lt;b&gt;THOMAS&amp;BETTS&lt;/b&gt; H3M15RA29A</description>
+<wire x1="-12.6111" y1="-15.4813" x2="-12.6111" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="-12.6111" y1="-9.3599" x2="-19.4437" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="-9.3599" x2="-19.4437" y2="3.3401" width="0.254" layer="21"/>
+<wire x1="19.4437" y1="3.3147" x2="19.4437" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="19.4437" y1="-9.3599" x2="12.6111" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="12.6111" y1="-9.3599" x2="12.6111" y2="-15.4813" width="0.254" layer="21"/>
+<wire x1="12.6111" y1="-15.4813" x2="-12.6111" y2="-15.4813" width="0.254" layer="21"/>
+<wire x1="-12.6111" y1="-9.3599" x2="12.6111" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="3.3401" x2="-12.0777" y2="3.3401" width="0.254" layer="21"/>
+<wire x1="-12.0777" y1="3.3401" x2="-12.0777" y2="-6.2992" width="0.254" layer="21"/>
+<wire x1="19.4437" y1="3.3147" x2="12.0777" y2="3.3147" width="0.254" layer="21"/>
+<wire x1="12.0777" y1="3.3147" x2="12.0777" y2="-6.2992" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="-6.4389" x2="19.4437" y2="-6.4389" width="0.254" layer="21"/>
+<pad name="1" x="-9.6901" y="1.4224" drill="1.0922"/>
+<pad name="2" x="-6.9215" y="1.4224" drill="1.0922"/>
+<pad name="3" x="-4.1529" y="1.4224" drill="1.0922"/>
+<pad name="4" x="-1.3843" y="1.4224" drill="1.0922"/>
+<pad name="5" x="1.3843" y="1.4224" drill="1.0922"/>
+<pad name="6" x="4.1529" y="1.4224" drill="1.0922"/>
+<pad name="7" x="6.9215" y="1.4224" drill="1.0922"/>
+<pad name="8" x="9.6901" y="1.4224" drill="1.0922"/>
+<pad name="9" x="-8.3058" y="-1.4224" drill="1.0922"/>
+<pad name="10" x="-5.5372" y="-1.4224" drill="1.0922"/>
+<pad name="11" x="-2.7686" y="-1.4224" drill="1.0922"/>
+<pad name="12" x="0" y="-1.4224" drill="1.0922"/>
+<pad name="13" x="2.7686" y="-1.4224" drill="1.0922"/>
+<pad name="14" x="5.5372" y="-1.4224" drill="1.0922"/>
+<pad name="15" x="8.3058" y="-1.4224" drill="1.0922"/>
+<text x="-9.525" y="3.175" size="1.27" layer="25">&gt;NAME</text>
+<text x="-12.7" y="-8.255" size="1.27" layer="27">&gt;VALUE</text>
+<hole x="-16.6624" y="0" drill="3.048"/>
+<hole x="16.6624" y="0" drill="3.048"/>
+</package>
+<package name="H5R15RA" urn="urn:adsk.eagle:footprint:10510/1" library_version="1">
+<description>&lt;b&gt;THOMAS&amp;BETTS&lt;/b&gt; H5R15RA29A</description>
+<wire x1="-12.6111" y1="-15.4813" x2="-12.6111" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="-12.6111" y1="-9.3599" x2="-19.4437" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="-9.3599" x2="-19.4437" y2="3.3401" width="0.254" layer="21"/>
+<wire x1="19.4437" y1="3.3147" x2="19.4437" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="19.4437" y1="-9.3599" x2="12.6111" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="12.6111" y1="-9.3599" x2="12.6111" y2="-15.4813" width="0.254" layer="21"/>
+<wire x1="12.6111" y1="-15.4813" x2="-12.6111" y2="-15.4813" width="0.254" layer="21"/>
+<wire x1="-12.6111" y1="-9.3599" x2="12.6111" y2="-9.3599" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="3.3401" x2="-12.0777" y2="3.3401" width="0.254" layer="21"/>
+<wire x1="-12.0777" y1="3.3401" x2="-12.0777" y2="-6.2992" width="0.254" layer="21"/>
+<wire x1="19.4437" y1="3.3147" x2="12.0777" y2="3.3147" width="0.254" layer="21"/>
+<wire x1="12.0777" y1="3.3147" x2="12.0777" y2="-6.2992" width="0.254" layer="21"/>
+<wire x1="-19.4437" y1="-6.4389" x2="19.4437" y2="-6.4389" width="0.254" layer="21"/>
+<pad name="1" x="9.6901" y="1.4224" drill="1.0922"/>
+<pad name="2" x="6.9215" y="1.4224" drill="1.0922"/>
+<pad name="3" x="4.1529" y="1.4224" drill="1.0922"/>
+<pad name="4" x="1.3843" y="1.4224" drill="1.0922"/>
+<pad name="5" x="-1.3843" y="1.4224" drill="1.0922"/>
+<pad name="6" x="-4.1529" y="1.4224" drill="1.0922"/>
+<pad name="7" x="-6.9215" y="1.4224" drill="1.0922"/>
+<pad name="8" x="-9.6901" y="1.4224" drill="1.0922"/>
+<pad name="9" x="8.3058" y="-1.4224" drill="1.0922"/>
+<pad name="10" x="5.5372" y="-1.4224" drill="1.0922"/>
+<pad name="11" x="2.7686" y="-1.4224" drill="1.0922"/>
+<pad name="12" x="0" y="-1.4224" drill="1.0922"/>
+<pad name="13" x="-2.7686" y="-1.4224" drill="1.0922"/>
+<pad name="14" x="-5.5372" y="-1.4224" drill="1.0922"/>
+<pad name="15" x="-8.3058" y="-1.4224" drill="1.0922"/>
+<text x="-10.16" y="2.54" size="1.27" layer="25">&gt;NAME</text>
+<text x="-13.335" y="-8.89" size="1.27" layer="27">&gt;VALUE</text>
+<hole x="-16.6624" y="0" drill="3.048"/>
+<hole x="16.6624" y="0" drill="3.048"/>
+</package>
+<package name="HDR15RA" urn="urn:adsk.eagle:footprint:10511/1" library_version="1">
+<description>&lt;b&gt;THOMAS&amp;BETTS&lt;/b&gt; HDR15RA2xxxxx</description>
+<wire x1="-8.2042" y1="-17.5133" x2="-8.2042" y2="-11.3919" width="0.254" layer="21"/>
+<wire x1="-8.2042" y1="-11.3919" x2="-15.5448" y2="-11.3919" width="0.254" layer="21"/>
+<wire x1="-15.5448" y1="-11.3919" x2="-15.5448" y2="-8.2169" width="0.254" layer="21"/>
+<wire x1="-15.5448" y1="-8.2169" x2="-15.5448" y2="3.9751" width="0.254" layer="21"/>
+<wire x1="15.5448" y1="3.9497" x2="15.5448" y2="-8.2169" width="0.254" layer="21"/>
+<wire x1="15.5448" y1="-8.2169" x2="15.5448" y2="-11.3919" width="0.254" layer="21"/>
+<wire x1="15.5448" y1="-11.3919" x2="8.2042" y2="-11.3919" width="0.254" layer="21"/>
+<wire x1="8.2042" y1="-11.3919" x2="8.2042" y2="-17.5133" width="0.254" layer="21"/>
+<wire x1="8.2042" y1="-17.5133" x2="-8.2042" y2="-17.5133" width="0.254" layer="21"/>
+<wire x1="-8.2042" y1="-11.3919" x2="8.2042" y2="-11.3919" width="0.254" layer="21"/>
+<wire x1="-15.5448" y1="3.9751" x2="-7.9248" y2="3.9751" width="0.254" layer="21"/>
+<wire x1="-7.9248" y1="3.9751" x2="-7.9248" y2="-8.0772" width="0.254" layer="21"/>
+<wire x1="15.5448" y1="3.9497" x2="7.9248" y2="3.9497" width="0.254" layer="21"/>
+<wire x1="7.9248" y1="3.9497" x2="7.9248" y2="-8.0772" width="0.254" layer="21"/>
+<wire x1="-15.5448" y1="-8.2169" x2="15.5448" y2="-8.2169" width="0.254" layer="21"/>
+<pad name="6" x="5.461" y="0" drill="1.016"/>
+<pad name="1" x="4.318" y="2.54" drill="1.016"/>
+<pad name="11" x="4.318" y="-2.54" drill="1.016"/>
+<pad name="2" x="2.032" y="2.54" drill="1.016"/>
+<pad name="3" x="-0.254" y="2.54" drill="1.016"/>
+<pad name="4" x="-2.54" y="2.54" drill="1.016"/>
+<pad name="5" x="-4.826" y="2.54" drill="1.016"/>
+<pad name="7" x="3.175" y="0" drill="1.016"/>
+<pad name="8" x="0.889" y="0" drill="1.016"/>
+<pad name="9" x="-1.397" y="0" drill="1.016"/>
+<pad name="10" x="-3.683" y="0" drill="1.016"/>
+<pad name="12" x="2.032" y="-2.54" drill="1.016"/>
+<pad name="13" x="-0.254" y="-2.54" drill="1.016"/>
+<pad name="14" x="-2.54" y="-2.54" drill="1.016"/>
+<pad name="15" x="-4.826" y="-2.54" drill="1.016"/>
+<text x="-5.715" y="4.445" size="1.27" layer="25">&gt;NAME</text>
+<text x="-10.16" y="-10.795" size="1.27" layer="27">&gt;VALUE</text>
+<hole x="-12.4968" y="0" drill="3.048"/>
+<hole x="12.4968" y="0" drill="3.048"/>
+</package>
+</packages>
+<packages3d>
+<package3d name="H2M15RA" urn="urn:adsk.eagle:package:10560/1" type="box" library_version="1">
+<description>THOMAS&amp;BETTS H2M15RA29A</description>
+<packageinstances>
+<packageinstance name="H2M15RA"/>
+</packageinstances>
+</package3d>
+<package3d name="H2M15ST" urn="urn:adsk.eagle:package:10561/1" type="box" library_version="1">
+<description>THOMAS&amp;BETTS H2M15ST29x</description>
+<packageinstances>
+<packageinstance name="H2M15ST"/>
+</packageinstances>
+</package3d>
+<package3d name="H2R15RA" urn="urn:adsk.eagle:package:10565/1" type="box" library_version="1">
+<description>THOMAS&amp;BETTS H2R15RA29A</description>
+<packageinstances>
+<packageinstance name="H2R15RA"/>
+</packageinstances>
+</package3d>
+<package3d name="H2R15ST" urn="urn:adsk.eagle:package:10563/1" type="box" library_version="1">
+<description>THOMAS&amp;BETTS H2R15ST29x</description>
+<packageinstances>
+<packageinstance name="H2R15ST"/>
+</packageinstances>
+</package3d>
+<package3d name="H3M15RA" urn="urn:adsk.eagle:package:10564/1" type="box" library_version="1">
+<description>THOMAS&amp;BETTS H3M15RA29A</description>
+<packageinstances>
+<packageinstance name="H3M15RA"/>
+</packageinstances>
+</package3d>
+<package3d name="H5M15RA" urn="urn:adsk.eagle:package:10566/1" type="box" library_version="1">
+<description>THOMAS&amp;BETTS H3M15RA29A</description>
+<packageinstances>
+<packageinstance name="H5M15RA"/>
+</packageinstances>
+</package3d>
+<package3d name="H5R15RA" urn="urn:adsk.eagle:package:10569/1" type="box" library_version="1">
+<description>THOMAS&amp;BETTS H5R15RA29A</description>
+<packageinstances>
+<packageinstance name="H5R15RA"/>
+</packageinstances>
+</package3d>
+<package3d name="HDR15RA" urn="urn:adsk.eagle:package:10568/1" type="box" library_version="1">
+<description>THOMAS&amp;BETTS HDR15RA2xxxxx</description>
+<packageinstances>
+<packageinstance name="HDR15RA"/>
+</packageinstances>
+</package3d>
+</packages3d>
+<symbols>
+<symbol name="FV" urn="urn:adsk.eagle:symbol:10475/1" library_version="1">
+<wire x1="0.889" y1="0.889" x2="0.889" y2="-0.889" width="0.254" layer="94" curve="180" cap="flat"/>
+<text x="1.27" y="-0.762" size="1.778" layer="95">&gt;NAME</text>
+<text x="-2.54" y="1.397" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="F" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
+</symbol>
+<symbol name="F" urn="urn:adsk.eagle:symbol:10474/1" library_version="1">
+<wire x1="0.889" y1="0.889" x2="0.889" y2="-0.889" width="0.254" layer="94" curve="180" cap="flat"/>
+<text x="1.27" y="-0.762" size="1.778" layer="95">&gt;NAME</text>
+<pin name="F" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="D-SUB15-" urn="urn:adsk.eagle:component:10605/1" prefix="X" library_version="1">
+<description>&lt;b&gt;D-Subminiatur Connector&lt;/b&gt;&lt;p&gt;
+Source: Electronioc Interconnects European Edition 1998</description>
+<gates>
+<gate name="-1" symbol="FV" x="0" y="15.24" addlevel="always" swaplevel="1"/>
+<gate name="-2" symbol="F" x="0" y="12.7" addlevel="always" swaplevel="1"/>
+<gate name="-3" symbol="F" x="0" y="10.16" addlevel="always" swaplevel="1"/>
+<gate name="-4" symbol="F" x="0" y="7.62" addlevel="always" swaplevel="1"/>
+<gate name="-5" symbol="F" x="0" y="5.08" addlevel="always" swaplevel="1"/>
+<gate name="-6" symbol="F" x="0" y="2.54" addlevel="always" swaplevel="1"/>
+<gate name="-7" symbol="F" x="0" y="0" addlevel="always" swaplevel="1"/>
+<gate name="-8" symbol="F" x="0" y="-2.54" addlevel="always" swaplevel="1"/>
+<gate name="-9" symbol="F" x="0" y="-5.08" addlevel="always" swaplevel="1"/>
+<gate name="-10" symbol="F" x="0" y="-7.62" addlevel="always" swaplevel="1"/>
+<gate name="-11" symbol="F" x="0" y="-10.16" addlevel="always" swaplevel="1"/>
+<gate name="-12" symbol="F" x="0" y="-12.7" addlevel="always" swaplevel="1"/>
+<gate name="-13" symbol="F" x="0" y="-15.24" addlevel="always" swaplevel="1"/>
+<gate name="-14" symbol="F" x="0" y="-17.78" addlevel="always" swaplevel="1"/>
+<gate name="-15" symbol="F" x="0" y="-20.32" addlevel="always" swaplevel="1"/>
+</gates>
+<devices>
+<device name="H2M15RA" package="H2M15RA">
+<connects>
+<connect gate="-1" pin="F" pad="1"/>
+<connect gate="-10" pin="F" pad="10"/>
+<connect gate="-11" pin="F" pad="11"/>
+<connect gate="-12" pin="F" pad="12"/>
+<connect gate="-13" pin="F" pad="13"/>
+<connect gate="-14" pin="F" pad="14"/>
+<connect gate="-15" pin="F" pad="15"/>
+<connect gate="-2" pin="F" pad="2"/>
+<connect gate="-3" pin="F" pad="3"/>
+<connect gate="-4" pin="F" pad="4"/>
+<connect gate="-5" pin="F" pad="5"/>
+<connect gate="-6" pin="F" pad="6"/>
+<connect gate="-7" pin="F" pad="7"/>
+<connect gate="-8" pin="F" pad="8"/>
+<connect gate="-9" pin="F" pad="9"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:10560/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="H2M15RA29B" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="93F8395" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="H2M15ST" package="H2M15ST">
+<connects>
+<connect gate="-1" pin="F" pad="1"/>
+<connect gate="-10" pin="F" pad="10"/>
+<connect gate="-11" pin="F" pad="11"/>
+<connect gate="-12" pin="F" pad="12"/>
+<connect gate="-13" pin="F" pad="13"/>
+<connect gate="-14" pin="F" pad="14"/>
+<connect gate="-15" pin="F" pad="15"/>
+<connect gate="-2" pin="F" pad="2"/>
+<connect gate="-3" pin="F" pad="3"/>
+<connect gate="-4" pin="F" pad="4"/>
+<connect gate="-5" pin="F" pad="5"/>
+<connect gate="-6" pin="F" pad="6"/>
+<connect gate="-7" pin="F" pad="7"/>
+<connect gate="-8" pin="F" pad="8"/>
+<connect gate="-9" pin="F" pad="9"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:10561/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="unknown" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="H2R15RA" package="H2R15RA">
+<connects>
+<connect gate="-1" pin="F" pad="1"/>
+<connect gate="-10" pin="F" pad="10"/>
+<connect gate="-11" pin="F" pad="11"/>
+<connect gate="-12" pin="F" pad="12"/>
+<connect gate="-13" pin="F" pad="13"/>
+<connect gate="-14" pin="F" pad="14"/>
+<connect gate="-15" pin="F" pad="15"/>
+<connect gate="-2" pin="F" pad="2"/>
+<connect gate="-3" pin="F" pad="3"/>
+<connect gate="-4" pin="F" pad="4"/>
+<connect gate="-5" pin="F" pad="5"/>
+<connect gate="-6" pin="F" pad="6"/>
+<connect gate="-7" pin="F" pad="7"/>
+<connect gate="-8" pin="F" pad="8"/>
+<connect gate="-9" pin="F" pad="9"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:10565/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="unknown" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="H2R15ST" package="H2R15ST">
+<connects>
+<connect gate="-1" pin="F" pad="1"/>
+<connect gate="-10" pin="F" pad="10"/>
+<connect gate="-11" pin="F" pad="11"/>
+<connect gate="-12" pin="F" pad="12"/>
+<connect gate="-13" pin="F" pad="13"/>
+<connect gate="-14" pin="F" pad="14"/>
+<connect gate="-15" pin="F" pad="15"/>
+<connect gate="-2" pin="F" pad="2"/>
+<connect gate="-3" pin="F" pad="3"/>
+<connect gate="-4" pin="F" pad="4"/>
+<connect gate="-5" pin="F" pad="5"/>
+<connect gate="-6" pin="F" pad="6"/>
+<connect gate="-7" pin="F" pad="7"/>
+<connect gate="-8" pin="F" pad="8"/>
+<connect gate="-9" pin="F" pad="9"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:10563/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="unknown" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="H3M15RA" package="H3M15RA">
+<connects>
+<connect gate="-1" pin="F" pad="1"/>
+<connect gate="-10" pin="F" pad="10"/>
+<connect gate="-11" pin="F" pad="11"/>
+<connect gate="-12" pin="F" pad="12"/>
+<connect gate="-13" pin="F" pad="13"/>
+<connect gate="-14" pin="F" pad="14"/>
+<connect gate="-15" pin="F" pad="15"/>
+<connect gate="-2" pin="F" pad="2"/>
+<connect gate="-3" pin="F" pad="3"/>
+<connect gate="-4" pin="F" pad="4"/>
+<connect gate="-5" pin="F" pad="5"/>
+<connect gate="-6" pin="F" pad="6"/>
+<connect gate="-7" pin="F" pad="7"/>
+<connect gate="-8" pin="F" pad="8"/>
+<connect gate="-9" pin="F" pad="9"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:10564/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="unknown" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="H5M15RA" package="H5M15RA">
+<connects>
+<connect gate="-1" pin="F" pad="1"/>
+<connect gate="-10" pin="F" pad="10"/>
+<connect gate="-11" pin="F" pad="11"/>
+<connect gate="-12" pin="F" pad="12"/>
+<connect gate="-13" pin="F" pad="13"/>
+<connect gate="-14" pin="F" pad="14"/>
+<connect gate="-15" pin="F" pad="15"/>
+<connect gate="-2" pin="F" pad="2"/>
+<connect gate="-3" pin="F" pad="3"/>
+<connect gate="-4" pin="F" pad="4"/>
+<connect gate="-5" pin="F" pad="5"/>
+<connect gate="-6" pin="F" pad="6"/>
+<connect gate="-7" pin="F" pad="7"/>
+<connect gate="-8" pin="F" pad="8"/>
+<connect gate="-9" pin="F" pad="9"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:10566/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MF" value="TYCO ELECTRONICS" constant="no"/>
+<attribute name="MPN" value="H5M15RA29C" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="93F8315" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="H5R15RA" package="H5R15RA">
+<connects>
+<connect gate="-1" pin="F" pad="1"/>
+<connect gate="-10" pin="F" pad="10"/>
+<connect gate="-11" pin="F" pad="11"/>
+<connect gate="-12" pin="F" pad="12"/>
+<connect gate="-13" pin="F" pad="13"/>
+<connect gate="-14" pin="F" pad="14"/>
+<connect gate="-15" pin="F" pad="15"/>
+<connect gate="-2" pin="F" pad="2"/>
+<connect gate="-3" pin="F" pad="3"/>
+<connect gate="-4" pin="F" pad="4"/>
+<connect gate="-5" pin="F" pad="5"/>
+<connect gate="-6" pin="F" pad="6"/>
+<connect gate="-7" pin="F" pad="7"/>
+<connect gate="-8" pin="F" pad="8"/>
+<connect gate="-9" pin="F" pad="9"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:10569/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MF" value="TYCO ELECTRONICS" constant="no"/>
+<attribute name="MPN" value="H5R15RA29B" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="93F8335" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="HDR15RA" package="HDR15RA">
+<connects>
+<connect gate="-1" pin="F" pad="1"/>
+<connect gate="-10" pin="F" pad="10"/>
+<connect gate="-11" pin="F" pad="11"/>
+<connect gate="-12" pin="F" pad="12"/>
+<connect gate="-13" pin="F" pad="13"/>
+<connect gate="-14" pin="F" pad="14"/>
+<connect gate="-15" pin="F" pad="15"/>
+<connect gate="-2" pin="F" pad="2"/>
+<connect gate="-3" pin="F" pad="3"/>
+<connect gate="-4" pin="F" pad="4"/>
+<connect gate="-5" pin="F" pad="5"/>
+<connect gate="-6" pin="F" pad="6"/>
+<connect gate="-7" pin="F" pad="7"/>
+<connect gate="-8" pin="F" pad="8"/>
+<connect gate="-9" pin="F" pad="9"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:10568/1"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="unknown" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -19957,7 +20480,6 @@ Based on the following sources:
 <part name="GND44" library="supply1" deviceset="GND" device=""/>
 <part name="P+8" library="supply1" deviceset="+5V" device=""/>
 <part name="P+9" library="supply1" deviceset="+5V" device=""/>
-<part name="X4_" library="con-thomas-betts" deviceset="D-SUB-15-SH" device=""/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="X3" library="con-lumberg" deviceset="1503_09" device="" value="LINE_IN"/>
 <part name="C24" library="rcl" deviceset="CPOL-EU" device="C" value="100uF"/>
@@ -20099,6 +20621,7 @@ Based on the following sources:
 <part name="R11" library="rcl" deviceset="R-EU_" device="R0603" value="4K7"/>
 <part name="+3V28" library="supply1" deviceset="+3V3" device=""/>
 <part name="CYC_IV_" library="qmtech" deviceset="QMTECH_EP4CE15" device=""/>
+<part name="X1" library="con-thomas-betts" library_urn="urn:adsk.eagle:library:191" deviceset="D-SUB15-" device="H5R15RA" package3d_urn="urn:adsk.eagle:package:10569/1"/>
 </parts>
 <sheets>
 <sheet>
@@ -20116,6 +20639,9 @@ Based on the following sources:
 <text x="307.34" y="30.48" size="2.54" layer="91">Should probably add a resistor between the X pin and 5V on these...</text>
 <text x="12.7" y="2.54" size="1.778" layer="91">The other 5V pins on the ISA slot actually bypass the fuse atm.
 The routing got tricky. lol</text>
+<text x="27.94" y="-63.5" size="1.778" layer="91">&lt;- Not used.</text>
+<text x="27.94" y="-60.96" size="1.778" layer="91">&lt;- Not used.</text>
+<text x="27.94" y="-10.16" size="1.778" layer="91">&lt;- Not used.</text>
 </plain>
 <instances>
 <instance part="ISA" gate="A" x="-2.54" y="66.04"/>
@@ -22717,10 +23243,10 @@ The routing got tricky. lol</text>
 <sheet>
 <description>FPGA</description>
 <plain>
-<text x="-7.62" y="99.06" size="1.778" layer="97" rot="MR0">CLK inputs were Grounded on the proto! -&gt;</text>
+<text x="17.78" y="99.06" size="1.778" layer="97" rot="MR0">CLK inputs were Grounded on the proto! -&gt;</text>
 </plain>
 <instances>
-<instance part="GND6" gate="1" x="45.72" y="129.54" rot="MR0"/>
+<instance part="GND6" gate="1" x="45.72" y="127" rot="MR0"/>
 <instance part="P+2" gate="1" x="27.94" y="17.78" rot="MR270"/>
 <instance part="GND7" gate="1" x="30.48" y="104.14" rot="MR90"/>
 <instance part="GND8" gate="1" x="106.68" y="104.14" rot="MR270"/>
@@ -22739,7 +23265,7 @@ The routing got tricky. lol</text>
 <instance part="+3V23" gate="G$1" x="231.14" y="114.3" rot="MR0"/>
 <instance part="CYC_IV_" gate="G$1" x="68.58" y="66.04"/>
 <instance part="CYC_IV_" gate="G$2" x="198.12" y="66.04"/>
-<instance part="CYC_IV_" gate="G$3" x="68.58" y="142.24"/>
+<instance part="CYC_IV_" gate="G$3" x="68.58" y="139.7"/>
 </instances>
 <busses>
 </busses>
@@ -22767,22 +23293,22 @@ The routing got tricky. lol</text>
 </net>
 <net name="NCONFIG" class="0">
 <segment>
-<label x="43.18" y="142.24" size="1.778" layer="95" rot="MR0"/>
-<wire x1="48.26" y1="142.24" x2="40.64" y2="142.24" width="0.1524" layer="91"/>
+<label x="43.18" y="139.7" size="1.778" layer="95" rot="MR0"/>
+<wire x1="48.26" y1="139.7" x2="40.64" y2="139.7" width="0.1524" layer="91"/>
 <pinref part="CYC_IV_" gate="G$3" pin="NCONFIG"/>
 </segment>
 </net>
 <net name="NSTATUS" class="0">
 <segment>
-<label x="43.18" y="139.7" size="1.778" layer="95" rot="MR0"/>
-<wire x1="48.26" y1="139.7" x2="40.64" y2="139.7" width="0.1524" layer="91"/>
+<label x="43.18" y="137.16" size="1.778" layer="95" rot="MR0"/>
+<wire x1="48.26" y1="137.16" x2="40.64" y2="137.16" width="0.1524" layer="91"/>
 <pinref part="CYC_IV_" gate="G$3" pin="NSTATUS"/>
 </segment>
 </net>
 <net name="CONF_DONE" class="0">
 <segment>
-<wire x1="48.26" y1="144.78" x2="40.64" y2="144.78" width="0.1524" layer="91"/>
-<label x="43.18" y="144.78" size="1.778" layer="95" rot="MR0"/>
+<wire x1="48.26" y1="142.24" x2="40.64" y2="142.24" width="0.1524" layer="91"/>
+<label x="43.18" y="142.24" size="1.778" layer="95" rot="MR0"/>
 <pinref part="CYC_IV_" gate="G$3" pin="CONF_DONE"/>
 </segment>
 </net>
@@ -23265,8 +23791,8 @@ The routing got tricky. lol</text>
 <net name="GND" class="0">
 <segment>
 <pinref part="GND6" gate="1" pin="GND"/>
-<wire x1="48.26" y1="134.62" x2="45.72" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="45.72" y1="134.62" x2="45.72" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="132.08" x2="45.72" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="132.08" x2="45.72" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="CYC_IV_" gate="G$3" pin="GND"/>
 </segment>
 <segment>
@@ -23430,15 +23956,15 @@ The routing got tricky. lol</text>
 </net>
 <net name="FPGA_DCLK" class="0">
 <segment>
-<wire x1="48.26" y1="147.32" x2="40.64" y2="147.32" width="0.1524" layer="91"/>
-<label x="43.18" y="147.32" size="1.778" layer="95" rot="MR0"/>
+<wire x1="48.26" y1="144.78" x2="40.64" y2="144.78" width="0.1524" layer="91"/>
+<label x="43.18" y="144.78" size="1.778" layer="95" rot="MR0"/>
 <pinref part="CYC_IV_" gate="G$3" pin="FPGA_DCLK"/>
 </segment>
 </net>
 <net name="FPGA_ADS0" class="0">
 <segment>
-<wire x1="48.26" y1="137.16" x2="40.64" y2="137.16" width="0.1524" layer="91"/>
-<label x="43.18" y="137.16" size="1.778" layer="95" rot="MR0"/>
+<wire x1="48.26" y1="134.62" x2="40.64" y2="134.62" width="0.1524" layer="91"/>
+<label x="43.18" y="134.62" size="1.778" layer="95" rot="MR0"/>
 <pinref part="CYC_IV_" gate="G$3" pin="FPGA_ADS0"/>
 </segment>
 </net>
@@ -24239,21 +24765,6 @@ MD1 and MD0 need to both be Low for SLAVE mode.</text>
 <plain>
 </plain>
 <instances>
-<instance part="X4_" gate="1" x="111.76" y="68.58"/>
-<instance part="X4_" gate="2" x="111.76" y="66.04"/>
-<instance part="X4_" gate="3" x="111.76" y="63.5"/>
-<instance part="X4_" gate="4" x="111.76" y="60.96"/>
-<instance part="X4_" gate="5" x="111.76" y="58.42"/>
-<instance part="X4_" gate="6" x="111.76" y="55.88"/>
-<instance part="X4_" gate="7" x="111.76" y="53.34"/>
-<instance part="X4_" gate="8" x="111.76" y="50.8"/>
-<instance part="X4_" gate="9" x="111.76" y="48.26"/>
-<instance part="X4_" gate="10" x="111.76" y="45.72"/>
-<instance part="X4_" gate="11" x="111.76" y="43.18"/>
-<instance part="X4_" gate="12" x="111.76" y="40.64"/>
-<instance part="X4_" gate="13" x="111.76" y="38.1"/>
-<instance part="X4_" gate="14" x="111.76" y="35.56"/>
-<instance part="X4_" gate="15" x="111.76" y="33.02"/>
 <instance part="GND3" gate="1" x="106.68" y="27.94" rot="MR0"/>
 <instance part="P+11" gate="1" x="104.14" y="78.74"/>
 <instance part="IC6" gate="G$1" x="195.58" y="58.42"/>
@@ -24288,24 +24799,39 @@ MD1 and MD0 need to both be Low for SLAVE mode.</text>
 <instance part="C18" gate="G$1" x="147.32" y="104.14"/>
 <instance part="GND40" gate="1" x="99.06" y="111.76" rot="MR90"/>
 <instance part="GND14" gate="1" x="60.96" y="12.7" rot="MR0"/>
+<instance part="X1" gate="-1" x="111.76" y="68.58"/>
+<instance part="X1" gate="-2" x="111.76" y="66.04"/>
+<instance part="X1" gate="-3" x="111.76" y="63.5"/>
+<instance part="X1" gate="-4" x="111.76" y="60.96"/>
+<instance part="X1" gate="-5" x="111.76" y="58.42"/>
+<instance part="X1" gate="-6" x="111.76" y="55.88"/>
+<instance part="X1" gate="-7" x="111.76" y="53.34"/>
+<instance part="X1" gate="-8" x="111.76" y="50.8"/>
+<instance part="X1" gate="-9" x="111.76" y="48.26"/>
+<instance part="X1" gate="-10" x="111.76" y="45.72"/>
+<instance part="X1" gate="-11" x="111.76" y="43.18"/>
+<instance part="X1" gate="-12" x="111.76" y="40.64"/>
+<instance part="X1" gate="-13" x="111.76" y="38.1"/>
+<instance part="X1" gate="-14" x="111.76" y="35.56"/>
+<instance part="X1" gate="-15" x="111.76" y="33.02"/>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="+5V" class="0">
 <segment>
-<pinref part="X4_" gate="1" pin="F"/>
 <wire x1="109.22" y1="68.58" x2="104.14" y2="68.58" width="0.1524" layer="91"/>
-<pinref part="X4_" gate="9" pin="F"/>
 <wire x1="104.14" y1="68.58" x2="104.14" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="48.26" x2="104.14" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="48.26" x2="104.14" y2="50.8" width="0.1524" layer="91"/>
 <junction x="104.14" y="68.58"/>
-<pinref part="X4_" gate="8" pin="F"/>
 <wire x1="104.14" y1="50.8" x2="104.14" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="109.22" y1="50.8" x2="104.14" y2="50.8" width="0.1524" layer="91"/>
 <junction x="104.14" y="50.8"/>
 <pinref part="P+11" gate="1" pin="+5V"/>
+<pinref part="X1" gate="-1" pin="F"/>
+<pinref part="X1" gate="-8" pin="F"/>
+<pinref part="X1" gate="-9" pin="F"/>
 </segment>
 <segment>
 <pinref part="IC4" gate="P" pin="VCC"/>
@@ -24320,14 +24846,14 @@ MD1 and MD0 need to both be Low for SLAVE mode.</text>
 </net>
 <net name="GND" class="0">
 <segment>
-<pinref part="X4_" gate="4" pin="F"/>
 <pinref part="GND3" gate="1" pin="GND"/>
 <wire x1="109.22" y1="60.96" x2="106.68" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="60.96" x2="106.68" y2="58.42" width="0.1524" layer="91"/>
 <wire x1="106.68" y1="58.42" x2="106.68" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="X4_" gate="5" pin="F"/>
 <wire x1="109.22" y1="58.42" x2="106.68" y2="58.42" width="0.1524" layer="91"/>
 <junction x="106.68" y="58.42"/>
+<pinref part="X1" gate="-4" pin="F"/>
+<pinref part="X1" gate="-5" pin="F"/>
 </segment>
 <segment>
 <pinref part="IC6" gate="G$1" pin="AGND"/>
@@ -24400,9 +24926,9 @@ MD1 and MD0 need to both be Low for SLAVE mode.</text>
 </net>
 <net name="JOY_B1_N" class="0">
 <segment>
-<pinref part="X4_" gate="2" pin="F"/>
 <wire x1="109.22" y1="66.04" x2="99.06" y2="66.04" width="0.1524" layer="91"/>
 <label x="101.6" y="66.04" size="1.778" layer="95" rot="MR0"/>
+<pinref part="X1" gate="-2" pin="F"/>
 </segment>
 <segment>
 <wire x1="50.8" y1="81.28" x2="58.42" y2="81.28" width="0.1524" layer="91"/>
@@ -24412,9 +24938,9 @@ MD1 and MD0 need to both be Low for SLAVE mode.</text>
 </net>
 <net name="JOY_X1" class="0">
 <segment>
-<pinref part="X4_" gate="3" pin="F"/>
 <wire x1="109.22" y1="63.5" x2="99.06" y2="63.5" width="0.1524" layer="91"/>
 <label x="101.6" y="63.5" size="1.778" layer="95" rot="MR0"/>
+<pinref part="X1" gate="-3" pin="F"/>
 </segment>
 <segment>
 <wire x1="144.78" y1="68.58" x2="139.7" y2="68.58" width="0.1524" layer="91"/>
@@ -24424,9 +24950,9 @@ MD1 and MD0 need to both be Low for SLAVE mode.</text>
 </net>
 <net name="JOY_Y1" class="0">
 <segment>
-<pinref part="X4_" gate="6" pin="F"/>
 <wire x1="109.22" y1="55.88" x2="99.06" y2="55.88" width="0.1524" layer="91"/>
 <label x="101.6" y="55.88" size="1.778" layer="95" rot="MR0"/>
+<pinref part="X1" gate="-6" pin="F"/>
 </segment>
 <segment>
 <wire x1="144.78" y1="53.34" x2="139.7" y2="53.34" width="0.1524" layer="91"/>
@@ -24436,9 +24962,9 @@ MD1 and MD0 need to both be Low for SLAVE mode.</text>
 </net>
 <net name="JOY_B2_N" class="0">
 <segment>
-<pinref part="X4_" gate="7" pin="F"/>
 <wire x1="109.22" y1="53.34" x2="99.06" y2="53.34" width="0.1524" layer="91"/>
 <label x="101.6" y="53.34" size="1.778" layer="95" rot="MR0"/>
+<pinref part="X1" gate="-7" pin="F"/>
 </segment>
 <segment>
 <wire x1="50.8" y1="68.58" x2="58.42" y2="68.58" width="0.1524" layer="91"/>
@@ -24448,9 +24974,9 @@ MD1 and MD0 need to both be Low for SLAVE mode.</text>
 </net>
 <net name="JOY_B3_N" class="0">
 <segment>
-<pinref part="X4_" gate="10" pin="F"/>
 <wire x1="109.22" y1="45.72" x2="99.06" y2="45.72" width="0.1524" layer="91"/>
 <label x="101.6" y="45.72" size="1.778" layer="95" rot="MR0"/>
+<pinref part="X1" gate="-10" pin="F"/>
 </segment>
 <segment>
 <wire x1="50.8" y1="55.88" x2="58.42" y2="55.88" width="0.1524" layer="91"/>
@@ -24460,9 +24986,9 @@ MD1 and MD0 need to both be Low for SLAVE mode.</text>
 </net>
 <net name="JOY_X2" class="0">
 <segment>
-<pinref part="X4_" gate="11" pin="F"/>
 <wire x1="109.22" y1="43.18" x2="99.06" y2="43.18" width="0.1524" layer="91"/>
 <label x="101.6" y="43.18" size="1.778" layer="95" rot="MR0"/>
+<pinref part="X1" gate="-11" pin="F"/>
 </segment>
 <segment>
 <wire x1="144.78" y1="63.5" x2="139.7" y2="63.5" width="0.1524" layer="91"/>
@@ -24472,9 +24998,9 @@ MD1 and MD0 need to both be Low for SLAVE mode.</text>
 </net>
 <net name="JOY_Y2" class="0">
 <segment>
-<pinref part="X4_" gate="13" pin="F"/>
 <wire x1="109.22" y1="38.1" x2="99.06" y2="38.1" width="0.1524" layer="91"/>
 <label x="101.6" y="38.1" size="1.778" layer="95" rot="MR0"/>
+<pinref part="X1" gate="-13" pin="F"/>
 </segment>
 <segment>
 <wire x1="144.78" y1="58.42" x2="139.7" y2="58.42" width="0.1524" layer="91"/>
@@ -24484,9 +25010,9 @@ MD1 and MD0 need to both be Low for SLAVE mode.</text>
 </net>
 <net name="JOY_B4_N" class="0">
 <segment>
-<pinref part="X4_" gate="14" pin="F"/>
 <wire x1="109.22" y1="35.56" x2="99.06" y2="35.56" width="0.1524" layer="91"/>
 <label x="101.6" y="35.56" size="1.778" layer="95" rot="MR0"/>
+<pinref part="X1" gate="-14" pin="F"/>
 </segment>
 <segment>
 <wire x1="50.8" y1="43.18" x2="58.42" y2="43.18" width="0.1524" layer="91"/>
@@ -24496,9 +25022,9 @@ MD1 and MD0 need to both be Low for SLAVE mode.</text>
 </net>
 <net name="MIDI_RXD" class="0">
 <segment>
-<pinref part="X4_" gate="12" pin="F"/>
 <wire x1="109.22" y1="40.64" x2="99.06" y2="40.64" width="0.1524" layer="91"/>
 <label x="101.6" y="40.64" size="1.778" layer="95" rot="MR0"/>
+<pinref part="X1" gate="-12" pin="F"/>
 </segment>
 <segment>
 <wire x1="50.8" y1="30.48" x2="58.42" y2="30.48" width="0.1524" layer="91"/>
@@ -24508,9 +25034,9 @@ MD1 and MD0 need to both be Low for SLAVE mode.</text>
 </net>
 <net name="MIDI_TXD" class="0">
 <segment>
-<pinref part="X4_" gate="15" pin="F"/>
 <wire x1="109.22" y1="33.02" x2="99.06" y2="33.02" width="0.1524" layer="91"/>
 <label x="101.6" y="33.02" size="1.778" layer="95" rot="MR0"/>
+<pinref part="X1" gate="-15" pin="F"/>
 </segment>
 <segment>
 <pinref part="IC4" gate="A" pin="O"/>
@@ -24674,9 +25200,6 @@ MD1 and MD0 need to both be Low for SLAVE mode.</text>
 <approved hash="204,1,12.7,-12.7,ISAB,-5VDC,,,,"/>
 <approved hash="202,4,182.88,55.88,IC6,NC,,,,"/>
 <approved hash="202,4,182.88,53.34,IC6,NC,,,,"/>
-<approved hash="209,2,48.26,147.32,FPGA_DCLK,,,,,"/>
-<approved hash="209,2,48.26,142.24,NCONFIG,,,,,"/>
-<approved hash="209,2,48.26,139.7,NSTATUS,,,,,"/>
 </errors>
 </schematic>
 </drawing>
