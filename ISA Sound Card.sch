@@ -20114,6 +20114,8 @@ Based on the following sources:
 <text x="195.58" y="-50.8" size="1.778" layer="97">&lt;- Open-Drain Outputs</text>
 <text x="76.2" y="129.54" size="1.778" layer="97">&lt;- BIDIR -&gt;</text>
 <text x="307.34" y="30.48" size="2.54" layer="91">Should probably add a resistor between the X pin and 5V on these...</text>
+<text x="12.7" y="2.54" size="1.778" layer="91">The other 5V pins on the ISA slot actually bypass the fuse atm.
+The routing got tricky. lol</text>
 </plain>
 <instances>
 <instance part="ISA" gate="A" x="-2.54" y="66.04"/>
@@ -20138,7 +20140,7 @@ Based on the following sources:
 <instance part="+3V14" gate="G$1" x="170.18" y="152.4" rot="R270"/>
 <instance part="GND4" gate="1" x="15.24" y="-157.48" rot="MR0"/>
 <instance part="GND5" gate="1" x="15.24" y="-83.82" rot="MR0"/>
-<instance part="P+1" gate="1" x="50.8" y="-7.62" rot="R270"/>
+<instance part="P+1" gate="1" x="68.58" y="-7.62" rot="R270"/>
 <instance part="P+3" gate="1" x="48.26" y="-17.78" rot="R270"/>
 <instance part="P-3" gate="1" x="68.58" y="-22.86" rot="MR270"/>
 <instance part="P+16" gate="1" x="40.64" y="-73.66" rot="R270"/>
@@ -20211,7 +20213,7 @@ Based on the following sources:
 <instance part="P+22" gate="1" x="231.14" y="149.86"/>
 <instance part="GND27" gate="1" x="231.14" y="124.46" rot="MR0"/>
 <instance part="GND28" gate="1" x="231.14" y="88.9" rot="MR0"/>
-<instance part="F3" gate="G$1" x="38.1" y="-5.08" rot="R180"/>
+<instance part="F3" gate="G$1" x="55.88" y="-5.08" rot="R180"/>
 <instance part="IC8" gate="A" x="358.14" y="2.54"/>
 <instance part="IC9" gate="A" x="358.14" y="-43.18"/>
 <instance part="IC10" gate="A" x="358.14" y="-93.98"/>
@@ -20678,7 +20680,7 @@ Based on the following sources:
 <segment>
 <pinref part="F3" gate="G$1" pin="1"/>
 <pinref part="P+1" gate="1" pin="+5V"/>
-<wire x1="43.18" y1="-7.62" x2="48.26" y2="-7.62" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="-7.62" x2="66.04" y2="-7.62" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="IC8" gate="P" pin="VCC"/>
@@ -22545,11 +22547,12 @@ Based on the following sources:
 <wire x1="109.22" y1="114.3" x2="78.74" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$13" class="0">
+<net name="5V_TO_FUSE" class="0">
 <segment>
 <pinref part="ISA" gate="B" pin="+5VDC@1"/>
 <pinref part="F3" gate="G$1" pin="2"/>
-<wire x1="12.7" y1="-7.62" x2="33.02" y2="-7.62" width="0.1524" layer="91"/>
+<wire x1="12.7" y1="-7.62" x2="50.8" y2="-7.62" width="0.1524" layer="91"/>
+<label x="33.02" y="-7.62" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$14" class="0">
@@ -22714,7 +22717,7 @@ Based on the following sources:
 <sheet>
 <description>FPGA</description>
 <plain>
-<text x="-5.08" y="99.06" size="1.778" layer="97">CLK inputs Grounded on the proto! -&gt;</text>
+<text x="-7.62" y="99.06" size="1.778" layer="97" rot="MR0">CLK inputs were Grounded on the proto! -&gt;</text>
 </plain>
 <instances>
 <instance part="GND6" gate="1" x="45.72" y="129.54" rot="MR0"/>
@@ -23163,9 +23166,9 @@ Based on the following sources:
 </net>
 <net name="FPGA_CLK" class="0">
 <segment>
-<wire x1="170.18" y1="71.12" x2="162.56" y2="71.12" width="0.1524" layer="91"/>
-<label x="165.1" y="71.12" size="1.778" layer="95" align="bottom-right"/>
-<pinref part="CYC_IV_" gate="G$2" pin="B1@25"/>
+<pinref part="CYC_IV_" gate="G$1" pin="CLK15_6P@5"/>
+<wire x1="40.64" y1="99.06" x2="33.02" y2="99.06" width="0.1524" layer="91"/>
+<label x="35.56" y="99.06" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="FPGA_DACK2_N" class="0">
@@ -23191,9 +23194,9 @@ Based on the following sources:
 </net>
 <net name="FPGA_OSC" class="0">
 <segment>
-<wire x1="170.18" y1="73.66" x2="162.56" y2="73.66" width="0.1524" layer="91"/>
-<label x="165.1" y="73.66" size="1.778" layer="95" align="bottom-right"/>
-<pinref part="CYC_IV_" gate="G$2" pin="C1@23"/>
+<pinref part="CYC_IV_" gate="G$1" pin="CLK14_6N@6"/>
+<wire x1="96.52" y1="99.06" x2="104.14" y2="99.06" width="0.1524" layer="91"/>
+<label x="101.6" y="99.06" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="FPGA_DACK0_N" class="0">

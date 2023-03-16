@@ -278,7 +278,10 @@ assign SD158_DIR = !bus_read;	// Bring SD158_DIR LOW during a READ.
 
 
 // SBHE Low denotes a byte has been put on the upper 8 bits of the ISA Data bus.
-// This often happens during writes to an Odd address as well. (like 0x389 for OPL).
+// SBHE will generally be asserted during single-byte writes to an Odd address (like 0x389 for OPL), as well as for 16-bit writes.
+//
+// (probably don't need this for the Sound Blaster and OPL IO writes, since DMA gets the full 16-bit ISA Data bus anyway.
+//  The ISA bus on my Pentium does duplicate odd-byte writes onto the Upper and Lower 16-bits, but do all ISA mobos do that? ElectronAsh.)
 //
 //wire [7:0] sound_writedata = (!SBHE) ? iobus_writedata[15:8] : iobus_writedata[7:0];
 wire [7:0] sound_writedata = iobus_writedata[7:0];
