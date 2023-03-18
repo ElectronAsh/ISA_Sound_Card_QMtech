@@ -706,24 +706,41 @@ assign dma_req16 = dma_req &  dma_16_use;
 wire   dma_ack_w      = dma_ack_f & (~dma_format[1] |  sample_lr);
 wire   dma_ack_stereo = dma_ack_f & ( dma_format[1] & ~sample_lr);
 
+reg dma_ack_1;
+reg [15:0] dma_in_lat;
+wire dma_ack_falling = dma_ack_1 && !dma_ack;
+
 reg        sample_output;
 reg        sample_lr;
 reg [15:0] sample_dma[2];
 always @(posedge clk) begin
+	dma_ack_1 <= dma_ack;
+	
+	if (dma_ack) dma_in_lat <= dma_readdata;
+
 	sample_lr <= dma_req & (sample_lr ^ (dma_ack_f & dma_format[1]));
 	sample_output <= dma_output;
-
-	if(dma_ack) begin
+	
+	/*
+	if (dma_ack) begin
 		if(~dma_16_req)    sample_dma[sample_lr]       <= {dma_readdata[7:0],8'd0};
 		else if(dma_16_en) sample_dma[sample_lr]       <= dma_readdata;
 		else if(~dma_hcnt) sample_dma[sample_lr][7:0]  <= dma_readdata[7:0];
 		else               sample_dma[sample_lr][15:8] <= dma_readdata[7:0];
 	end
+	*/
+	
+	if (dma_ack_falling) begin
+		if(~dma_16_req)    sample_dma[sample_lr]       <= {dma_in_lat[7:0],8'd0};
+		else if(dma_16_en) sample_dma[sample_lr]       <= dma_in_lat;
+		else if(~dma_hcnt) sample_dma[sample_lr][7:0]  <= dma_in_lat[7:0];
+		else               sample_dma[sample_lr][15:8] <= dma_in_lat[7:0];
+	end
 end
 
 wire dma_ack_f = dma_ack & (dma_hcnt | dma_16_en | ~dma_16_req);
 reg  dma_hcnt;
-always @(posedge clk) dma_hcnt <= dma_req & (dma_hcnt ^ dma_ack);
+always @(posedge clk) dma_hcnt <= dma_req & (dma_hcnt ^ dma_ack_falling);
 
 //------------------------------------------------------------------------------ adpcm
 

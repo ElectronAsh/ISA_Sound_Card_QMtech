@@ -144,6 +144,9 @@ reg [19:0] sa_reg;
 reg [6:0] la_reg;
 reg [19:0] addr_lat;
 
+reg dack1_n_reg;
+reg dack5_n_reg;
+
 (*keep*)wire bale_falling = !BALE & bale_reg;
 (*keep*)wire ior_n_falling = !IOR_N & ior_n_reg;
 (*keep*)wire ior_n_rising = IOR_N & !ior_n_reg;
@@ -157,14 +160,17 @@ always @(posedge clk_sys) begin
 	bale_reg <= BALE;
 	sd_reg <= SD;
 	if (bale_falling) sa_reg <= SA;
-	la_reg <= LA;
+	if (bale_falling) la_reg <= LA;
+	
+	dack1_n_reg <= DACK1_N;
+	dack5_n_reg <= DACK5_N;
 end
 
 
 (*keep*)wire [15:0] io_addr = sa_reg[15:0];
 
 (*keep*)wire joy_cs = (io_addr == 16'h0201) && !AEN;
-(*keep*)wire sb_cs  = (io_addr >= 16'h0220 && io_addr <= 16'h022f) && !AEN /*&& (!IOR_N | !IOW_N)*/;
+(*keep*)wire sb_cs  = (io_addr >= 16'h0220 && io_addr <= 16'h022f) && !AEN;
 (*keep*)wire fm_cs  = (io_addr >= 16'h0388 && io_addr <= 16'h038b) && !AEN;
 (*keep*)wire mpu_cs = (io_addr >= 16'h0330 && io_addr <= 16'h0331) && !AEN;
 
@@ -242,13 +248,24 @@ assign DRQ_HI_SEL = 3'd5;
 assign DRQ_HI_TRIG_N = !dma_req16;
 
 
-wire dma_ack = (!DACK1_N | !DACK5_N) && !IOW_N && AEN;
-
+reg read_n_1;
+reg write_n_1;
+wire read_n_falling = read_n_1  && !IOR_N;
+wire write_n_rising = !write_n_1 && IOW_N;
+always @(posedge clk_sys) begin
+	read_n_1 <= IOR_N;
+	write_n_1 <= IOW_N;
+end
 
 wire [15:0] dma_readdata = SD;
+//wire [15:0] dma_readdata = sd_reg;
 wire [15:0] dma_writedata;
 wire dma_req8;
 wire dma_req16;
+
+wire dma_ack = (!DACK1_N | !DACK5_N) && !IOW_N && AEN;
+//wire dma_ack = (!dack1_n_reg | !dack5_n_reg) && !write_n_1 && AEN;
+
 
 (*keep*)wire [15:0] sb_out_l, sb_out_r;
 
@@ -295,7 +312,8 @@ reg [15:0] clk_div;
 always @(posedge CLOCK_50) clk_div <= clk_div + 1; 
 
 //wire i2s_ce = clk_div[3:0]==0;	// 3.125 MHz. 64fs, so 48,828 KHz I2S output rate.
-wire i2s_ce = clk_div[2:0]==0;	// 6.250 MHz. 64fs, so 97.656 KHz I2S output rate.
+//wire i2s_ce = clk_div[2:0]==0;	// 6.250 MHz. 64fs, so 97.656 KHz I2S output rate.
+wire i2s_ce = clk_div[1:0]==0;	// 12.500 MHz. 64fs, so 195.312 KHz I2S output rate.
 
 i2s i2s_inst
 (
@@ -316,15 +334,8 @@ i2s i2s_inst
 (*keep*)wire [7:0] mpu_readdata;
 (*keep*)wire irq_mpu;
 
-reg read_n_1;
-reg write_n_1;
-always @(posedge clk_sys) begin
-	read_n_1 <= IOR_N;
-	write_n_1 <= IOW_N;
-end
-
-wire mpu_read  = read_n_1  && !IOR_N;
-wire mpu_write = !write_n_1 && IOW_N;
+wire mpu_read  = read_n_falling;
+wire mpu_write = write_n_rising;
 
 mpu mpu
 (
