@@ -1,2 +1,0 @@
-Created on:D??¨²¨°?, ¨º??t?? 31, 2018
-Based on:DE0_CV_SDRAM_RTL_Test

@@ -1,5 +1,0 @@
-PLL_Name	PLL01:u0|altpll:altpll_component|PLL01_altpll:auto_generated|pll1
-PLLJITTER	30
-PLLSPEmax	84
-PLLSPEmin	-53
-

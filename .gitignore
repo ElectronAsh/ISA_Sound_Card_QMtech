@@ -3,5 +3,6 @@ outputs
 *.s#*
 Quartus_Project/db
 Quartus_Project/incremental_db
+Quartus_Project/greybox_tmp
 Quartus_Project/output_files/*
 *.stp
