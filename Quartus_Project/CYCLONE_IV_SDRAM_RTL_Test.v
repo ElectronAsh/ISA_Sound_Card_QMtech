@@ -35,13 +35,13 @@ module CYCLONE_IV_SDRAM_RTL_Test(
 
 	inout [15:0]		SD,
 
-	input [19:0]		SA,
+	input [19:0]		SA,			// (SA[19:16] are input-only on the card).
 	input [23:17]		LA,
 
 	inout       		SD70_DIR,
 	inout       		SD158_DIR,
 
-	inout       		SA158_DIR,
+	inout       		SA158_DIR,	// (SA[19:16] are input-only on the card).
 	inout       		LA_DIR,
 
 	input       		IOR_N,
@@ -66,14 +66,10 @@ module CYCLONE_IV_SDRAM_RTL_Test(
 	input       		MASTER_N,
 
 	output       		DRQ_HI_TRIG_N,
-	output       		DRQ_HI_SEL_A0,
-	output       		DRQ_HI_SEL_A1,
-	output       		DRQ_HI_SEL_A2,
+	output [2:0]		DRQ_HI_SEL,
 
 	output       		DRQ_LO_TRIG_N,
-	output       		DRQ_LO_SEL_A0,
-	output       		DRQ_LO_SEL_A1,
-	output       		DRQ_LO_SEL_A2,
+	output [2:0]		DRQ_LO_SEL,
 
 	input       		DACK0_N,
 	input       		DACK1_N,
@@ -85,14 +81,10 @@ module CYCLONE_IV_SDRAM_RTL_Test(
 	input       		DACK7_N,
 
 	output       		IRQ_HI_TRIG_N,
-	output       		IRQ_HI_SEL_A0,
-	output       		IRQ_HI_SEL_A1,
-	output       		IRQ_HI_SEL_A2,
+	output [2:0]		IRQ_HI_SEL,
 
 	output       		IRQ_LO_TRIG_N,
-	output       		IRQ_LO_SEL_A0,
-	output       		IRQ_LO_SEL_A2,
-	output       		IRQ_LO_SEL_A1,
+	output [2:0]		IRQ_LO_SEL,
 
 	// Joystick ADC, and button inputs...
 	output       		JOY_CLK,
@@ -119,98 +111,20 @@ module CYCLONE_IV_SDRAM_RTL_Test(
 	inout       		SPARE_A3
 );
 
-/*
-//=======================================================
-//  REG/WIRE declarations
-//=======================================================
-wire  [15:0]  writedata;
-wire  [15:0]  readdata;
-wire          write;
-wire          read;
-wire          clk_test;
 
-//	SDRAM frame buffer
-Sdram_Control	u1	(	//	HOST Side
-						   .REF_CLK(CLOCK_50),
-					      .RESET_N(KEY[1]),
-							//	FIFO Write Side 
-						   .WR_DATA(writedata),
-							.WR(write),
-							.WR_ADDR(0),
-							.WR_MAX_ADDR(24'h1ffffff),
-							.WR_LENGTH(9'h80),
-							.WR_LOAD(!KEY[1] ),
-							.WR_CLK(clk_test),
-							//	FIFO Read Side 
-						   .RD_DATA(readdata),
-				        	.RD(read),
-				        	.RD_ADDR(0),			//	Read odd field and bypess blanking
-							.RD_MAX_ADDR(24'h1ffffff),
-							.RD_LENGTH(9'h80),
-				        	.RD_LOAD(!KEY[1] ),
-							.RD_CLK(clk_test),
-                     //	SDRAM Side
-						   .SA(DRAM_ADDR),
-						   .BA(DRAM_BA),
-						   .CS_N(DRAM_CS_N),
-						   .CKE(DRAM_CKE),
-						   .RAS_N(DRAM_RAS_N),
-				         .CAS_N(DRAM_CAS_N),
-				         .WE_N(DRAM_WE_N),
-						   .DQ(DRAM_DQ),
-				         .DQM({DRAM_UDQM,DRAM_LDQM}),
-							.SDR_CLK(DRAM_CLK)	);
-
-wire  test_start_n;
-
-wire  sdram_test_pass;
-wire  sdram_test_fail;
-wire  sdram_test_complete;
-*/
-
-/*
 PLL01 u0(
 	.areset(1'b0),
 	.inclk0(CLOCK_50),
-	.c0(clk_sys),
+	.c0(clk_mpu),
 	.locked()
 );
-wire clk_sys;
-*/
+wire clk_mpu;
 
 //wire clk_sys = CLOCK_50;
 wire clk_sys = CLK;
 
 
-/*
-RW_Test u2(
-      .iCLK(clk_test),
-		.iRST_n(KEY[1]),
-		.iBUTTON(test_start_n),
-      .write(write),
-		.writedata(writedata),
-	   .read(read),
-		.readdata(readdata),
-      .drv_status_pass(sdram_test_pass),
-		.drv_status_fail(sdram_test_fail),
-		.drv_status_test_complete(sdram_test_complete)
-);
-
-assign test_start_n = KEY[0];
-
-assign LEDR = !(sdram_test_complete & sdram_test_pass);
-*/
-
-
-// All of these have Pull-ups.
-// If they are  High-Z, the signal direction will be A->B, or ISA->FPGA.
-// Pull LOW, to allow output to the ISA bus.
-//
-//assign SD70_DIR = 1'bz;	// ISA Data bits [7:0]  DIRection.
-assign SD158_DIR = 1'bz;	// ISA Data bits [15:8] DIRection.
-
-assign SA158_DIR = 1'bz;	// ISA Addr bits [15:8] DIRection.
-assign LA_DIR = 1'bz;
+//assign LEDR = 1'b1;
 
 
 reg [15:0] reset_cnt;
@@ -242,19 +156,17 @@ always @(posedge clk_sys) begin
 	iow_n_reg <= IOW_N;
 	bale_reg <= BALE;
 	sd_reg <= SD;
-	sa_reg <= SA;
+	if (bale_falling) sa_reg <= SA;
 	la_reg <= LA;
-	
-	if (bale_falling) addr_lat <= sa_reg;
 end
 
 
-(*keep*)wire [15:0] io_addr = addr_lat[15:0];
+(*keep*)wire [15:0] io_addr = sa_reg[15:0];
 
 (*keep*)wire joy_cs = (io_addr == 16'h0201) && !AEN;
-(*keep*)wire sb_cs  = (io_addr >= 16'h0220 && io_addr <= 16'h022f) && !AEN;
+(*keep*)wire sb_cs  = (io_addr >= 16'h0220 && io_addr <= 16'h022f) && !AEN /*&& (!IOR_N | !IOW_N)*/;
 (*keep*)wire fm_cs  = (io_addr >= 16'h0388 && io_addr <= 16'h038b) && !AEN;
-(*keep*)wire mpu_cs = (io_addr == 16'h0330) && !AEN;
+(*keep*)wire mpu_cs = (io_addr >= 16'h0330 && io_addr <= 16'h0331) && !AEN;
 
 (*keep*)wire fm_mode = 1'b1;	// OPL3.
 (*keep*)wire cms_en = 1'b0;	// Disable for now.
@@ -267,9 +179,19 @@ end
 (*keep*)wire [7:0] sound_readdata;
 (*keep*)wire iobus_read = !ior_n_reg;
 
-//wire bus_read = ((sb_cs | fm_cs) & !ior_n_reg);
-wire bus_read = ((sb_cs | fm_cs) & !IOR_N);
-assign SD = (bus_read) ? {sound_readdata, sound_readdata} : 16'hzzzz;
+
+// All of these have Pull-ups.
+// If they are  High-Z, the signal direction will be A->B, or ISA->FPGA.
+// Pull LOW, to allow output to the ISA bus.
+//
+//assign SD70_DIR = 1'bz;	// ISA Data bits [7:0]  DIRection.
+//assign SD158_DIR = 1'bz;	// ISA Data bits [15:8] DIRection.
+assign SA158_DIR = 1'bz;	// ISA Addr bits [15:8] DIRection. (SA[19:16] are input-only on the card).
+assign LA_DIR = 1'bz;		// ISA Addr bits [23:17] DIRection.
+
+
+wire bus_read = ((joy_cs | sb_cs | fm_cs | mpu_cs) & !IOR_N);
+assign SD = (bus_read) ? {sound_readdata, sound_readdata} : (mpu_cs) ? {mpu_readdata, mpu_readdata} : 16'hzzzz;
 assign SD70_DIR = !bus_read;	// Bring SD70_DIR LOW during a READ.
 assign SD158_DIR = !bus_read;	// Bring SD158_DIR LOW during a READ.
 
@@ -284,10 +206,6 @@ wire [7:0] sound_writedata = (!SBHE && addr_lat[0]) ? iobus_writedata[15:8] : io
 //wire [7:0] sound_writedata = iobus_writedata[7:0];
 
 
-(*keep*)wire [7:0] mpu_readdata;
-
-(*keep*)wire [15:0] sb_out_l, sb_out_r;
-
 // IRQ_xx_SEL 0 = IRQ5.  LPT2.
 // IRQ_xx_SEL 1 = IRQ6.  Floppy Drive.
 // IRQ_xx_SEL 2 = IRQ7.  LPT1.
@@ -297,17 +215,30 @@ wire [7:0] sound_writedata = (!SBHE && addr_lat[0]) ? iobus_writedata[15:8] : io
 // IRQ_xx_SEL 6 = IRQ14. ATA.
 // IRQ_xx_SEL 7 = IRQ15. ATA.
 //
-assign {IRQ_LO_SEL_A2, IRQ_LO_SEL_A1, IRQ_LO_SEL_A0} = 3'd0;
+// A Low on a IRQ_xx_TRIG_N pin will assert a HIGH on the IRQ pin
+//
+assign IRQ_LO_SEL = 3'd0;
 assign IRQ_LO_TRIG_N = !irq_5;
 
-assign {IRQ_HI_SEL_A2, IRQ_HI_SEL_A1, IRQ_HI_SEL_A0} = 3'd3;
-assign IRQ_HI_TRIG_N = !irq_10;
+assign IRQ_HI_SEL = 3'd3;
+assign IRQ_HI_TRIG_N = !irq_mpu;
 
 
-assign {DRQ_LO_SEL_A2, DRQ_LO_SEL_A1, DRQ_LO_SEL_A0} = 3'd1;
+// DRQ_xx_SEL 0 = DMA 0.
+// DRQ_xx_SEL 1 = DMA 1 (typically for 8-bit sound DMA).
+// DRQ_xx_SEL 2 = DMA 2
+// DRQ_xx_SEL 3 = DMA 3
+// DRQ_xx_SEL 4 = (not used).
+// DRQ_xx_SEL 5 = DMA 5 (typically for 16-bit sound DMA).
+// DRQ_xx_SEL 6 = DMA 6
+// DRQ_xx_SEL 7 = DMA 7
+//
+// A Low on a DRQ_xx_TRIG_N pin will assert a HIGH on the DRQ pin
+//
+assign DRQ_LO_SEL = 3'd1;
 assign DRQ_LO_TRIG_N = !dma_req8;
 
-assign {DRQ_HI_SEL_A2, DRQ_HI_SEL_A1, DRQ_HI_SEL_A0} = 3'd5;
+assign DRQ_HI_SEL = 3'd5;
 assign DRQ_HI_TRIG_N = !dma_req16;
 
 
@@ -318,6 +249,8 @@ wire [15:0] dma_readdata = SD;
 wire [15:0] dma_writedata;
 wire dma_req8;
 wire dma_req16;
+
+(*keep*)wire [15:0] sb_out_l, sb_out_r;
 
 sound sound_inst
 (
@@ -335,10 +268,10 @@ sound sound_inst
 	.address(io_addr[3:0]) ,		// input [3:0] address
 	
 	.readdata(sound_readdata) ,	// output [7:0] readdata
-	.read(iobus_read) ,				// input  read
+	.read(iobus_read && (sb_cs | fm_cs)) ,				// input  read
 	
 	.writedata(sound_writedata) ,	// input [7:0] writedata
-	.write(iobus_write) ,			// input  write
+	.write(iobus_write && (sb_cs | fm_cs)) ,			// input  write
 	
 	.sb_cs(sb_cs) ,					// input  sb_cs
 	
@@ -357,13 +290,12 @@ sound sound_inst
 	.sample_r(sb_out_r)				// output [15:0] sample_r	
 );
 
+
 reg [15:0] clk_div;
 always @(posedge CLOCK_50) clk_div <= clk_div + 1; 
 
 //wire i2s_ce = clk_div[3:0]==0;	// 3.125 MHz. 64fs, so 48,828 KHz I2S output rate.
 wire i2s_ce = clk_div[2:0]==0;	// 6.250 MHz. 64fs, so 97.656 KHz I2S output rate.
-
-//wire [15:0] test_tone = {clk_div[15], 15'h7fff};
 
 i2s i2s_inst
 (
@@ -372,23 +304,28 @@ i2s i2s_inst
 	.clk(CLOCK_50) ,			// input  clk
 	.ce(i2s_ce) ,				// input  ce
 	
-	.sclk(i2s_bck_out) ,		// output  sclk
-	.lrclk(i2s_lrck_out) ,	// output  lrclk
-	.sdata(i2s_data_out) ,	// output  sdata
+	.sclk(I2S_BCK) ,			// output  sclk
+	.lrclk(I2S_LRCK) ,		// output  lrclk
+	.sdata(DAC_DIN) ,			// output  sdata
 	
-	.left_chan( {sb_out_l, 16'h0000} ) ,	// input [AUDIO_DW-1:0] left_chan
-	.right_chan( {sb_out_r, 16'h0000} ) 	// input [AUDIO_DW-1:0] right_chan
+	.left_chan( {sb_out_l, 16'h0000} ) ,	// input [AUDIO_DW-1:0] left_chan.  (up to) 32-bit now.
+	.right_chan( {sb_out_r, 16'h0000} ) 	// input [AUDIO_DW-1:0] right_chan. (up to) 32-bit now.
 );
 
-(*keep*)wire i2s_bck_out;
-(*keep*)wire i2s_lrck_out;
-(*keep*)wire i2s_data_out;
 
-assign I2S_BCK  = i2s_bck_out;
-assign I2S_LRCK = i2s_lrck_out;
-assign DAC_DIN  = i2s_data_out;
+(*keep*)wire [7:0] mpu_readdata;
+(*keep*)wire irq_mpu;
 
-/*
+reg read_n_1;
+reg write_n_1;
+always @(posedge clk_sys) begin
+	read_n_1 <= IOR_N;
+	write_n_1 <= IOW_N;
+end
+
+wire mpu_read  = read_n_1  && !IOR_N;
+wire mpu_write = !write_n_1 && IOW_N;
+
 mpu mpu
 (
 	.clk               (clk_sys),
@@ -397,17 +334,17 @@ mpu mpu
 
 	.address           (io_addr[0]),
 	.writedata         (iobus_writedata[7:0]),
-	.read              (iobus_read),
-	.write             (iobus_write),
+	.read              (mpu_read),
+	.write             (mpu_write),
 	.readdata          (mpu_readdata),
 	.cs                (mpu_cs),
 
-	.rx                (mpu_rx),
-	.tx                (mpu_tx),
+	.rx                (MIDI_RXD),
+	.tx                (MIDI_TXD),
 
 	.double_rate       (1),
-	.irq               (irq_9)
+	.irq               (irq_mpu)
 );
-*/
+
 
 endmodule

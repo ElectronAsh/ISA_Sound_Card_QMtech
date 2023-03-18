@@ -101,8 +101,16 @@ always @(posedge clk) begin
 end
 
 wire highspeed_reset = io_write && io_address == 4'h6 &&  highspeed_mode;
-wire midi_uart_reset = io_write && io_address == 4'h6 && ~highspeed_mode &&  midi_uart_mode && reset_reg && ~io_writedata[0];
-wire sw_reset        = io_write && io_address == 4'h6 && ~highspeed_mode && ~midi_uart_mode && reset_reg && ~io_writedata[0];
+
+//wire midi_uart_reset = io_write && io_address == 4'h6 && ~highspeed_mode &&  midi_uart_mode && reset_reg && ~io_writedata[0];
+//wire sw_reset        = io_write && io_address == 4'h6 && ~highspeed_mode && ~midi_uart_mode && reset_reg && ~io_writedata[0];
+
+// Possible fix.
+// A RISING edge on io_writedata[0] should trigger the reset...
+// Some games might be writing a 0 to port 0x226. The older logic above would be triggering a spurious reset I think? ElectronASh.
+wire midi_uart_reset = io_write && io_address == 4'h6 && ~highspeed_mode &&  midi_uart_mode && ~reset_reg && io_writedata[0];
+wire sw_reset        = io_write && io_address == 4'h6 && ~highspeed_mode && ~midi_uart_mode && ~reset_reg && io_writedata[0];
+
 
 //------------------------------------------------------------------------------ dummy input
 
@@ -466,7 +474,7 @@ always @(posedge clk) begin
 	if(~rst_n || sw_reset)                                                        irq8 <= 1'b0;
 	else if((dma_finished || dma_auto_restart || pause_interrupt) && ~dma_16_req) irq8 <= 1'b1;
 	else if(trg_irq8)                                                             irq8 <= 1'b1;
-	else if(io_read_valid && io_address == 4'hE)                                  irq8 <= 1'b0;
+	else if(io_read_valid && ((io_address==4'hE) | (io_address==4'hF)) )				irq8 <= 1'b0;
 end
 
 // timeout for some games
@@ -482,11 +490,12 @@ always @(posedge clk) begin
 	else if(io_read_valid && io_address == 4'hE && irq8) cnt <= 8'b0;
 end
 
+
 always @(posedge clk) begin
 	if(~rst_n || sw_reset)                                                        irq16 <= 1'b0;
 	else if((dma_finished || dma_auto_restart || pause_interrupt) && dma_16_req)  irq16 <= 1'b1;
 	else if(cmd_trigger_irq16)                                                    irq16 <= 1'b1;
-	else if(io_read_valid && io_address == 4'hF)                                  irq16 <= 1'b0;
+	else if(io_read_valid && ((io_address==4'hE) | (io_address==4'hF)) )				irq16 <= 1'b0;
 end
 
 //------------------------------------------------------------------------------ dma commands

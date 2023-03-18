@@ -1,1 +1,0 @@
-sdram_pll0_sim/sdram_pll0.vo

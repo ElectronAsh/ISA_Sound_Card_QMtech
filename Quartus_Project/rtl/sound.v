@@ -62,17 +62,27 @@ module sound
 );
 
 
-reg write_1;
-always @(posedge clk) write_1 <= write; 
+reg read_1, write_1;
+always @(posedge clk) begin
+	read_1 <= read;
+	write_1 <= write;
+end
 
-wire sb_read  = read  & sb_cs;
+
+//wire sb_read  = read  & sb_cs;
+wire sb_read  = read  & !read_1 & sb_cs;
+
 //wire sb_write = write & sb_cs;
 wire sb_write = write & !write_1 & sb_cs;
+
 
 wire fm_read  = read  & fm_cs;
 wire fm_write = write & fm_cs;
 
-always @(posedge clk) readdata <= mixer_rd ? mixer_val : cms_rd ? data_from_cms : (!address[2:0]) ? (opl_dout | (fm_mode ? 8'h00 : 8'h06)) : data_from_dsp;
+always @(posedge clk) readdata <= mixer_rd ? mixer_val : 		// Port 0x225 accesses.
+											   cms_rd ? data_from_cms :	// Port 0x224 or 0x228, if cms_en is High.
+									(!address[2:0]) ? (opl_dout | (fm_mode ? 8'h00 : 8'h06)) :
+															data_from_dsp;
 
 //------------------------------------------------------------------------------
 
@@ -246,7 +256,7 @@ always @(posedge clk) begin
 end
 
 //wire irq_5_en = ~irq_7_en & ~irq_10_en;
-wire irq_5_en = 1'b1;	// Force IRQ5 for now. Testing on ISA card. ElectronAsh.
+wire irq_5_en = 1'b1;	// Forcing IRQ5 atm. ISA card testing. ElectronASh.
 
 
 reg       sbp_stereo;

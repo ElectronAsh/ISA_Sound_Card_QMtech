@@ -77,7 +77,6 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name SEARCH_PATH "e:\\altera\\software\\de0_cv_sdram_rtl_test\\cv_altclkctrl\\synthesis"
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[9] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
 set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
@@ -178,9 +177,9 @@ set_location_assignment PIN_AB15 -to LA[20]
 set_location_assignment PIN_AA16 -to LA[22]
 set_location_assignment PIN_AB16 -to SBHE
 set_location_assignment PIN_AA17 -to DRQ_HI_TRIG_N
-set_location_assignment PIN_AB17 -to DRQ_HI_SEL_A0
-set_location_assignment PIN_AA18 -to DRQ_HI_SEL_A1
-set_location_assignment PIN_AB18 -to DRQ_HI_SEL_A2
+set_location_assignment PIN_AB17 -to DRQ_HI_SEL[0]
+set_location_assignment PIN_AA18 -to DRQ_HI_SEL[1]
+set_location_assignment PIN_AB18 -to DRQ_HI_SEL[2]
 set_location_assignment PIN_AA19 -to DACK6_N
 set_location_assignment PIN_AB19 -to LA_DIR
 set_location_assignment PIN_AA20 -to DACK0_N
@@ -199,10 +198,10 @@ set_location_assignment PIN_P21 -to SA[11]
 set_location_assignment PIN_N22 -to SA[13]
 set_location_assignment PIN_N21 -to SA[15]
 set_location_assignment PIN_M22 -to IRQ_HI_TRIG_N
-set_location_assignment PIN_M21 -to IRQ_HI_SEL_A0
-set_location_assignment PIN_L22 -to IRQ_HI_SEL_A1
+set_location_assignment PIN_M21 -to IRQ_HI_SEL[0]
+set_location_assignment PIN_L22 -to IRQ_HI_SEL[1]
+set_location_assignment PIN_K22 -to IRQ_HI_SEL[2]
 set_location_assignment PIN_L21 -to ZERO_WAIT
-set_location_assignment PIN_K22 -to IRQ_HI_SEL_A2
 set_location_assignment PIN_K21 -to SMEMW_N
 set_location_assignment PIN_J22 -to SA[16]
 set_location_assignment PIN_J21 -to SA[18]
@@ -233,9 +232,9 @@ set_location_assignment PIN_N2 -to LA[19]
 set_location_assignment PIN_M1 -to LA[21]
 set_location_assignment PIN_M2 -to LA[23]
 set_location_assignment PIN_J1 -to DRQ_LO_TRIG_N
-set_location_assignment PIN_J2 -to DRQ_LO_SEL_A0
-set_location_assignment PIN_H1 -to DRQ_LO_SEL_A1
-set_location_assignment PIN_H2 -to DRQ_LO_SEL_A2
+set_location_assignment PIN_J2 -to DRQ_LO_SEL[0]
+set_location_assignment PIN_H1 -to DRQ_LO_SEL[1]
+set_location_assignment PIN_H2 -to DRQ_LO_SEL[2]
 set_location_assignment PIN_F1 -to SPARE_F1
 set_location_assignment PIN_F2 -to SPARE_F2
 set_location_assignment PIN_E1 -to DACK7_N
@@ -254,10 +253,10 @@ set_location_assignment PIN_B5 -to SA[8]
 set_location_assignment PIN_A5 -to SA[10]
 set_location_assignment PIN_B6 -to SA[12]
 set_location_assignment PIN_A6 -to SA[14]
-set_location_assignment PIN_B7 -to IRQ_LO_SEL_A0
 set_location_assignment PIN_A7 -to IRQ_LO_TRIG_N
-set_location_assignment PIN_B8 -to IRQ_LO_SEL_A2
-set_location_assignment PIN_A8 -to IRQ_LO_SEL_A1
+set_location_assignment PIN_B7 -to IRQ_LO_SEL[0]
+set_location_assignment PIN_A8 -to IRQ_LO_SEL[1]
+set_location_assignment PIN_B8 -to IRQ_LO_SEL[2]
 set_location_assignment PIN_A9 -to SMEMR_N
 set_location_assignment PIN_B10 -to RES_DRV
 set_location_assignment PIN_A10 -to SA[17]
@@ -290,9 +289,9 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LA[20]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LA[22]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SBHE
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRQ_HI_TRIG_N
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRQ_HI_SEL_A0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRQ_HI_SEL_A1
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRQ_HI_SEL_A2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRQ_HI_SEL[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRQ_HI_SEL[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRQ_HI_SEL[2]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DACK6_N
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LA_DIR
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DACK0_N
@@ -311,10 +310,10 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SA[11]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SA[13]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SA[15]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IRQ_HI_TRIG_N
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IRQ_HI_SEL_A0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IRQ_HI_SEL_A1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IRQ_HI_SEL[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IRQ_HI_SEL[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IRQ_HI_SEL[2]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ZERO_WAIT
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IRQ_HI_SEL_A2
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SMEMW_N
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SA[16]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SA[18]
@@ -345,9 +344,9 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LA[19]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LA[21]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LA[23]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRQ_LO_TRIG_N
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRQ_LO_SEL_A0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRQ_LO_SEL_A1
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRQ_LO_SEL_A2
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRQ_LO_SEL[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRQ_LO_SEL[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRQ_LO_SEL[2]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE_F1
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SPARE_F2
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DACK7_N
@@ -366,10 +365,10 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SA[8]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SA[10]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SA[12]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SA[14]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IRQ_LO_SEL_A0
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IRQ_LO_TRIG_N
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IRQ_LO_SEL_A2
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IRQ_LO_SEL_A1
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IRQ_LO_SEL[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IRQ_LO_SEL[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to IRQ_LO_SEL[2]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SMEMR_N
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RES_DRV
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SA[17]
@@ -398,35 +397,6 @@ set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[0] 
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[1] -to BALE -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[0] -to AEN -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[1] -to BALE -section_id auto_signaltap_0
-set_global_assignment -name VERILOG_FILE rtl/i2s.v
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/opl3/opl3seq.sv
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/opl3/opl3fm.sv
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/opl3/opl3.sv
-set_global_assignment -name QIP_FILE rtl/opl3/opl3.qip
-set_global_assignment -name VERILOG_FILE rtl/opl3/NextZ80Reg.v
-set_global_assignment -name VERILOG_FILE rtl/opl3/NextZ80CPU.v
-set_global_assignment -name VERILOG_FILE rtl/opl3/NextZ80ALU.v
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/opl3/compressor.sv
-set_global_assignment -name VERILOG_FILE rtl/sound_dsp.v
-set_global_assignment -name VERILOG_FILE rtl/sound.v
-set_global_assignment -name QIP_FILE rtl/sound.qip
-set_global_assignment -name SYSTEMVERILOG_FILE rtl/saa1099.sv
-set_global_assignment -name VERILOG_FILE CYCLONE_IV_SDRAM_RTL_Test.v
-set_global_assignment -name QIP_FILE Sdram_Control/sdram_pll0.qip
-set_global_assignment -name VERILOG_FILE v/RW_Test.v
-set_global_assignment -name QIP_FILE Sdram_Control/Sdram_WR_FIFO.qip
-set_global_assignment -name QIP_FILE Sdram_Control/Sdram_RD_FIFO.qip
-set_global_assignment -name SOURCE_FILE Sdram_Control/Sdram_Params.h
-set_global_assignment -name VERILOG_FILE Sdram_Control/Sdram_Control.v
-set_global_assignment -name VERILOG_FILE Sdram_Control/sdr_data_path.v
-set_global_assignment -name VERILOG_FILE Sdram_Control/control_interface.v
-set_global_assignment -name VERILOG_FILE Sdram_Control/command.v
-set_global_assignment -name SDC_FILE DE0_CV_SDRAM_RTL_Test.sdc
-set_global_assignment -name QIP_FILE v/pll_test.qip
-set_global_assignment -name SIP_FILE v/pll_test.sip
-set_global_assignment -name SIGNALTAP_FILE stp1.stp
-set_global_assignment -name QIP_FILE PLL01.qip
-set_global_assignment -name QIP_FILE PLL_SDRAM.qip
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[31] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[15] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[0] -to AEN -section_id auto_signaltap_0
@@ -440,7 +410,6 @@ set_location_assignment PIN_B9 -to SA158_DIR
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SA158_DIR
 set_location_assignment PIN_Y21 -to SD158_DIR
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SD158_DIR
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[3] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[2] -to DACK1_N -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[3] -to DACK5_N -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[4] -to DAC_DIN -section_id auto_signaltap_0
@@ -457,7 +426,6 @@ set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualif
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[5] -to DRQ_HI_TRIG_N -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[6] -to DRQ_LO_TRIG_N -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_clk -to CLK -section_id auto_signaltap_0
-set_global_assignment -name SDC_FILE top_level.sdc
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[1]
 set_location_assignment PIN_Y13 -to KEY[1]
 set_location_assignment PIN_W13 -to KEY[0]
@@ -548,18 +516,12 @@ set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[0] -t
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[4] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[7] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[17] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[23] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[25] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[27] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[29] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
 set_instance_assignment -name FAST_INPUT_REGISTER ON -to sd_reg
 set_instance_assignment -name FAST_INPUT_REGISTER ON -to sa_reg
 set_instance_assignment -name FAST_INPUT_REGISTER ON -to ior_n_reg
 set_instance_assignment -name FAST_INPUT_REGISTER ON -to iow_n_reg
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[5] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[1] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[26] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[30] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[31] -to RES_DRV -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[32] -to SA[0] -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[33] -to SA[10] -section_id auto_signaltap_0
@@ -644,9 +606,6 @@ set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[111
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[112] -to "sound:sound_inst|sample_l[7]" -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[113] -to "sound:sound_inst|sample_l[8]" -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[114] -to "sound:sound_inst|sample_l[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[115] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|dma_ack_f" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[116] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|dma_hcnt" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[117] -to "sound:sound_inst|write" -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[31] -to RES_DRV -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[32] -to SA[0] -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[33] -to SA[10] -section_id auto_signaltap_0
@@ -731,9 +690,6 @@ set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[111] -
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[112] -to "sound:sound_inst|sample_l[7]" -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[113] -to "sound:sound_inst|sample_l[8]" -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[114] -to "sound:sound_inst|sample_l[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[115] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|dma_ack_f" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[116] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|dma_hcnt" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[117] -to "sound:sound_inst|write" -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[31] -to RES_DRV -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[32] -to SA[0] -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[33] -to SA[10] -section_id auto_signaltap_0
@@ -818,32 +774,108 @@ set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualif
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[112] -to "sound:sound_inst|sample_l[7]" -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[113] -to "sound:sound_inst|sample_l[8]" -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[114] -to "sound:sound_inst|sample_l[9]" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[115] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|dma_ack_f" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[116] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|dma_hcnt" -section_id auto_signaltap_0
-set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[117] -to "sound:sound_inst|write" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_DATA_BITS=118" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_BITS=118" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_BITS=118" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK=0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK_LENGTH=733" -section_id auto_signaltap_0
-set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=355" -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SEGMENT_SIZE=1024" -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[2] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[6] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[8] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[10] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[11] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[12] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[13] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[14] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[16] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[18] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[19] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[20] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[21] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[22] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
-set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[24] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[28] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SAMPLE_DEPTH=1024" -section_id auto_signaltap_0
+set_global_assignment -name VERILOG_FILE rtl/uart/uart.v
+set_global_assignment -name QIP_FILE rtl/uart/uart.qip
+set_global_assignment -name VHDL_FILE rtl/uart/gh_uart_Tx_8bit.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_uart_Rx_8bit.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_uart_16550.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_shift_reg_se_sl.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_shift_reg_PL_sl.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_register_ce.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_parity_gen_Serial.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_jkff.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_gray2binary.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_fifo_async16_rcsr_wf.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_fifo_async_sr.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_edge_det_XCD.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_edge_det.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_DECODE_3to8.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_counter_integer_down.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_counter_down_ce_ld_tc.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_counter_down_ce_ld.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_binary2gray.vhd
+set_global_assignment -name VHDL_FILE rtl/uart/gh_baud_rate_gen.vhd
+set_global_assignment -name VERILOG_FILE rtl/i2s.v
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/opl3/opl3seq.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/opl3/opl3fm.sv
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/opl3/opl3.sv
+set_global_assignment -name QIP_FILE rtl/opl3/opl3.qip
+set_global_assignment -name VERILOG_FILE rtl/opl3/NextZ80Reg.v
+set_global_assignment -name VERILOG_FILE rtl/opl3/NextZ80CPU.v
+set_global_assignment -name VERILOG_FILE rtl/opl3/NextZ80ALU.v
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/opl3/compressor.sv
+set_global_assignment -name VERILOG_FILE rtl/sound_dsp.v
+set_global_assignment -name VERILOG_FILE rtl/sound.v
+set_global_assignment -name QIP_FILE rtl/sound.qip
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/saa1099.sv
+set_global_assignment -name VERILOG_FILE CYCLONE_IV_SDRAM_RTL_Test.v
+set_global_assignment -name QIP_FILE Sdram_Control/sdram_pll0.qip
+set_global_assignment -name VERILOG_FILE v/RW_Test.v
+set_global_assignment -name QIP_FILE Sdram_Control/Sdram_WR_FIFO.qip
+set_global_assignment -name QIP_FILE Sdram_Control/Sdram_RD_FIFO.qip
+set_global_assignment -name SOURCE_FILE Sdram_Control/Sdram_Params.h
+set_global_assignment -name VERILOG_FILE Sdram_Control/Sdram_Control.v
+set_global_assignment -name VERILOG_FILE Sdram_Control/sdr_data_path.v
+set_global_assignment -name VERILOG_FILE Sdram_Control/control_interface.v
+set_global_assignment -name VERILOG_FILE Sdram_Control/command.v
+set_global_assignment -name SDC_FILE DE0_CV_SDRAM_RTL_Test.sdc
+set_global_assignment -name QIP_FILE v/pll_test.qip
+set_global_assignment -name SIP_FILE v/pll_test.sip
+set_global_assignment -name SIGNALTAP_FILE stp1.stp
+set_global_assignment -name QIP_FILE PLL01.qip
+set_global_assignment -name QIP_FILE PLL_SDRAM.qip
+set_global_assignment -name SDC_FILE top_level.sdc
+set_global_assignment -name VERILOG_FILE rtl/mpu.v
+set_global_assignment -name VHDL_FILE rtl/gh_uart_16550.vhd
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[115] -to "sound:sound_inst|sb_read" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[116] -to "sound:sound_inst|sb_write" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[117] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|dma_ack_f" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[118] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|dma_hcnt" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[119] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|sw_reset" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[120] -to "sound:sound_inst|write" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[115] -to "sound:sound_inst|sb_read" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[116] -to "sound:sound_inst|sb_write" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[117] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|dma_ack_f" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[118] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|dma_hcnt" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[119] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|sw_reset" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[120] -to "sound:sound_inst|write" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[115] -to "sound:sound_inst|sb_read" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[116] -to "sound:sound_inst|sb_write" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[117] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|dma_ack_f" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[118] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|dma_hcnt" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[119] -to "sound:sound_inst|sound_dsp:sound_dsp_inst|sw_reset" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[120] -to "sound:sound_inst|write" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_DATA_BITS=121" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_BITS=121" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_BITS=121" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK=0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK_LENGTH=751" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=364" -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[1] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[2] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[3] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[5] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[8] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[9] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[10] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[11] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[12] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[13] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[16] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[19] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[20] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[21] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[22] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[23] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[24] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[26] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[29] -to auto_signaltap_0|vcc -section_id auto_signaltap_0
+set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[30] -to auto_signaltap_0|gnd -section_id auto_signaltap_0
 set_global_assignment -name SLD_FILE db/stp1_auto_stripped.stp
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
