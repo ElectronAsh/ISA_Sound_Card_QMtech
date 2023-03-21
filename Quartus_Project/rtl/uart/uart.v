@@ -118,16 +118,16 @@ always @(posedge clk) begin
 		mpu_dumb <= 0;
 	end
 	else if (cs) begin
-		if (address) begin
-			if (read) readdata <= {~(read_ack | ~rx_empty), tx_full, 6'd0};
-			if (write) begin
+		if (address) begin	// Port 0x331 (MPU Command/Status).
+			if (read) readdata <= {~(read_ack | ~rx_empty), tx_full, 6'd0};	// Read status.
+			if (write) begin																// Write command.
 				read_ack <= ~mpu_dumb;
-				if (writedata == 8'hFF) mpu_dumb <= 0;
-				if (writedata == 8'h3F) mpu_dumb <= 1;
+				if (writedata == 8'hFF) mpu_dumb <= 0;	// Intelligent mode requested.
+				if (writedata == 8'h3F) mpu_dumb <= 1;	// Dumb mode requested.
 			end
 		end
-		else if (read) begin
-			readdata <= read_ack ? 8'hFE : data;
+		else if (read) begin	// Port 0x330 Read (MPU Data).
+			readdata <= read_ack ? 8'hFE : data;	// If a read_ack is pending, let it read 0xFE, else let it read the UART data.
 			read_ack <= 0;
 		end
 	end

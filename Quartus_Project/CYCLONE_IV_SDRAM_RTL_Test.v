@@ -196,9 +196,15 @@ assign SA158_DIR = 1'bz;	// ISA Addr bits [15:8] DIRection. (SA[19:16] are input
 assign LA_DIR = 1'bz;		// ISA Addr bits [23:17] DIRection.
 
 
-wire bus_read = ((joy_cs | sb_cs | fm_cs | mpu_cs) & !IOR_N);
-assign SD = (bus_read) ? {sound_readdata, sound_readdata} : (mpu_cs) ? {mpu_readdata, mpu_readdata} : 16'hzzzz;
-assign SD70_DIR = !bus_read;	// Bring SD70_DIR LOW during a READ.
+wire bus_read = (joy_cs | sb_cs | fm_cs | mpu_cs) & !IOR_N;
+
+wire [15:0] read_mux = joy_cs ? joy_readdata :
+							  mpu_cs ? {mpu_readdata, mpu_readdata} :
+							           {sound_readdata, sound_readdata};
+
+assign SD = (bus_read) ? read_mux : 16'hzzzz;
+
+assign SD70_DIR  = !bus_read;	// Bring SD70_DIR LOW during a READ.
 assign SD158_DIR = !bus_read;	// Bring SD158_DIR LOW during a READ.
 
 
@@ -356,6 +362,31 @@ mpu mpu
 	.double_rate       (1),
 	.irq               (irq_mpu)
 );
+
+
+
+wire [13:0] dig_1 = {8'h00, JOY_B4, JOY_B3, JOY_B2, JOY_B1, 4'b0000};
+wire [13:0] dig_2 = 14'h0000;
+wire [15:0] ana_1 = 16'h0000;
+wire [15:0] ana_2 = 16'h0000;
+
+wire [7:0] joy_readdata;
+
+joystick joystick_inst
+(
+	.rst_n(MRESET_N) ,					// input  rst_n
+	.clk(clk_sys) ,						// input  clk
+	.clock_rate( 28'd8_000_000 ) ,	// input [27:0] clock_rate
+	.dig_1(dig_1) ,						// input [13:0] dig_1
+	.dig_2(dig_2) ,						// input [13:0] dig_2
+	.ana_1(ana_1) ,						// input [15:0] ana_1
+	.ana_2(ana_2) ,						// input [15:0] ana_2
+	.mode( 2'd1 ) ,						// input [1:0] mode
+	.dis( 2'b00 ) ,						// input [1:0] dis
+	.readdata(joy_readdata) ,			// output [7:0] readdata
+	.write(joy_cs && write_n_rising) // input  write
+);
+
 
 
 endmodule
